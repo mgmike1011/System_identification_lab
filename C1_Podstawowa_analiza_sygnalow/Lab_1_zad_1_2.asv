@@ -1,0 +1,12 @@
+load('StochasticProcess.mat')
+% Realizacja w czasie
+m_czas = zeros(1,length(StochasticProcess(1,:)));
+sig_kwa_czas = zeros(1,length(StochasticProcess(1,:)));
+for i = 1:1001
+    x = StochasticProcess(i,:);
+    m_czas(i) = mean(x);
+    sig_kwa_czas(i) = var(x);
+end
+% Realizacja po realizacji
+m_realizacja = zeros(1,length(StochasticProcess(1,:)));
+sig_kwa_reali = zeros(1,length(StochasticProcess(1,:)));
