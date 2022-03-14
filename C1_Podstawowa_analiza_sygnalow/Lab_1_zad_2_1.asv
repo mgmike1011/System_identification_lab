@@ -1,0 +1,13 @@
+clear all; clc;
+%Gêstoœci widmowe mocy N - elementowych sekwencji sygna³ów
+Tp = 0.001; %okres próbkowania
+H = tf([0.1],[1 -0.9],Tp); 
+N = 2000; %wziête z zadania 1.3
+sigma_kwadrat = 0.64; %z zadania 1.3
+sigma = sqrt(sigma_kwadrat); 
+
+%Sygna³y (skoñczone sekwencje ich próbek):
+for n = 1:N
+    
+end 
+
