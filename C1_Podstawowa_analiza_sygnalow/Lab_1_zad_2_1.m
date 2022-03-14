@@ -4,7 +4,8 @@
 %Dane:
 Tp = 0.001; %okres próbkowania
 H = tf([0.1],[1 -0.9],Tp); 
-N = 2000; %wziête z zadania 1.3
+N = 2000; % Defaultowa wartoœæ
+
 sigma_kwadrat = 0.64; %z zadania 1.3
 sigma = sqrt(sigma_kwadrat); 
 
@@ -29,7 +30,41 @@ plot(x)
 title('Spróbkowany w czasie sygna³ - x(nTp)')
 subplot(3,1,3)
 plot(v)
-title('Odpowiedz H na wymuszenie e - v')
+title('Szum kolorowy')
 
 % 2.1.2 Obliczenie i wyœwietlenie dyskretnego widma amplitudowego:
+DFT = fft(x); % Dla Tp = 1
+DFT_Tp = Tp*DFT; % Wynik wymno¿ony *Tp
+m = abs(DFT_Tp); % |X_N|
+f = (0:length(DFT_Tp)-1)*N/length(DFT_Tp); %wektor czêstotliwoœci
 
+% Przeskalowane modu³y, aby uzyskaæ zgodnoœæ wysokoœci pr¹¿ków z A
+% sk³adowych sinusoidalnych:
+przeskalowane_XN = (2*m/(N*Tp)); 
+
+figure
+subplot(2,1,1)
+plot(f,m)
+title('DFT (XN) nieprzeskalowane')
+subplot(2,1,2)
+plot(f, przeskalowane_XN)
+title('Przeskalowane modu³y X_N')
+
+%Interpretacja wyników zadania 2.1.2:
+%Dlaczego nieprzeskalowane i przeskalowane s¹ takie same??
+
+% 2.1.3 Wp³yw N na jakoœæ widma amplitudowego:
+% Wnioski dla N = 1000
+% Wnioski dla N = 200
+% Wnioski dla N = 100
+
+% 2.1.4. Spe³nienie twierdzenia Parsevala (jeœli s¹ sobie równe - spe³nione twierdzenie):
+sum_x2=sum(x.^2);
+E_1 = Tp*sum_x2; %ca³kowita energia, wzór pierwszy po znaku równa siê
+
+periodogram=m.^2/(N*Tp); % estymator - periodogram
+sum_per=sum(periodogram); % suma, wzór na ca³kowit¹ energiê
+
+%Wniosek: wartoœci s¹ sobie równe, spe³nione jest twierdzenie Parsevala
+
+% 2.1.5 Estymatory (14) i (15) - gêstoœæ widmowa:
