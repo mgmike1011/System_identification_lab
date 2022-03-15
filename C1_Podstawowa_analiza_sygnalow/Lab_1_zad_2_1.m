@@ -67,4 +67,13 @@ sum_per=sum(periodogram); % suma, wzór na ca³kowit¹ energiê
 
 %Wniosek: wartoœci s¹ sobie równe, spe³nione jest twierdzenie Parsevala
 
-% 2.1.5 Estymatory (14) i (15) - gêstoœæ widmowa:
+% 2.1.5 Estymatory (14) i (16) - gêstoœæ widmowa:
+%Estymator (14) - periodogram:
+fe = fft(e);
+e_m = abs(fe);
+periodogram_e=e_m.^2/(N*Tp); % estymator - periodogram
+
+%Estymator (16) wyznaczany metod¹ korelogramow¹
+
+
+% Jaki wp³yw ma wartoœæ wariancji ?^2 szumu na estymatê gêstoœci widmowej mocy
