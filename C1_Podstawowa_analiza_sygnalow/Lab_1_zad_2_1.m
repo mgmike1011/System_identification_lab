@@ -1,4 +1,4 @@
-%clear all; clc;
+clear all; clc;
 %Gêstoœci widmowe mocy N - elementowych sekwencji sygna³ów
 
 %Dane:
@@ -19,6 +19,9 @@ e = sigma * randn(1,N); %szum bia³y
 for n = 1:N
     x(n) = (sin(2*pi*5*n*Tp) + 0.5*sin(2*pi*10*n*Tp) + 0.25*sin(2*pi*30*n*Tp));
     v = (lsim(H,e,tn))'; %transpozycja aby by³ wymiar 1x2000
+
+    e_auto_korelacja(n)=Covar([e' e'], n-1); %autokorelacja do dalszych zadañ, 
+    %Covar przy zakomentowanej roznicy wartoœci œrednich okreœla korelacjê 
 end 
     
 % 2.1.1 Wyœwietlanie wykresów:
@@ -69,11 +72,25 @@ sum_per=sum(periodogram); % suma, wzór na ca³kowit¹ energiê
 
 % 2.1.5 Estymatory (14) i (16) - gêstoœæ widmowa:
 %Estymator (14) - periodogram:
-fe = fft(e);
-e_m = abs(fe);
-periodogram_e=e_m.^2/(N*Tp); % estymator - periodogram
+fe_periodogeam = fft(e);
+e_m = abs(fe_periodogeam);
+gestosc_periodogram_e=e_m.^2/(N*Tp); % estymator gêstoœci widmowej mocy - periodogram
 
-%Estymator (16) wyznaczany metod¹ korelogramow¹
+%Estymator (16) wyznaczany metod¹ korelogramow¹ - okno prostok¹tne:
+Mw = N/5; % zalecane wg instrukcji
+z = zeros(N-Mw);
+o = ones(Mw);
+okno_prostok = [o(1,:) z(1,:)];
+%okno_prostokatne = rectwin(Mw);
+fe_okno = fft(e_auto_korelacja.*okno_prostok, N);
+gestosc_okno_e=abs(fe_okno);
 
+figure
+subplot(2,1,1)
+plot(gestosc_periodogram_e)
+title('Gêstoœæ widmowa mocy - estymator (14)')
+subplot(2,1,2)
+plot(gestosc_okno_e)
+title('Gêstoœæ widmowa mocy - estymator (16) - okno prostok¹tne')
 
 % Jaki wp³yw ma wartoœæ wariancji ?^2 szumu na estymatê gêstoœci widmowej mocy
