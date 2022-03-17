@@ -27,54 +27,28 @@ legend('y','x')
 subplot(2,1,2)
 plot(v)
 legend('v')
-% Wartoœci estymatora funkcji autokorelacji estymator obciazony:
+% Wartoœci estymatora funkcji autokorelacji:
 [rxx,rxxx] = xcorr(x);
 [ryy,ryyy] = xcorr(y);
 [rvv,rvvv] = xcorr(v);
-[ree,reee] = xcorr(e);
+ree = xcorr(e);
 % Wyœwietlenie wyników:
 N = length(rxx);
 N_ = (-N+1):(N);
 figure
 subplot(4,1,1)
+% xxr = flip(rxx);
+% rx = [xxr rxx];
 plot(rxxx,rxx)
 title('xcorr(x)')
+% axis([(-N+1) (N-1) -1000 1000])
 subplot(4,1,2)
-plot(ryyy,ryy)
+plot(ryy)
 title('xcorr(y)')
 subplot(4,1,3)
-plot(reee,ree)
+plot(ree)
 title('xcorr(e)')
 subplot(4,1,4)
-plot(rvvv,rvv)
+plot(rvv)
 title('xcorr(v)')
 % Sprawdziæ ró¿nice w przebiegu funkcji autokorelacji przy zastosowaniu estymatora obci¹¿onego i nieobci¹¿onego.
-[rxx_nieob,rxxx_nieob] = xcorr(x,'unbiased');
-[ryy_nieob,ryyy_nieob] = xcorr(y,'unbiased');
-[rvv_nieob,rvvv_nieob] = xcorr(v,'unbiased');
-[ree_nieob,reee_nieob] = xcorr(e,'unbiased');
-figure
-subplot(4,1,1)
-plot(rxxx_nieob,rxx_nieob)
-title('xcorr(x) Nieobciazony')
-subplot(4,1,2)
-plot(ryyy_nieob,ryy_nieob)
-title('xcorr(y)')
-subplot(4,1,3)
-plot(reee_nieob,ree_nieob)
-title('xcorr(e)')
-subplot(4,1,4)
-plot(rvvv_nieob,rvv_nieob)
-title('xcorr(v)')
-% Porównaæ przebieg estymaty funkcji autokorelacji v z e:
-figure
-plot(ree)
-hold on
-plot(rvv)
-hold off
-legend('xcorr(e)','xcorr(v)')
-% Dla x i y obliczyæ i wykreœliæ korelacjê wzajemn¹ 
-[ryx,ryx_]=xcorr(y,x);
-figure
-plot(ryx_,ryx)
-title('Korelacja wzajemna ryx')
