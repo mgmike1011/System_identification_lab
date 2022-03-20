@@ -9,7 +9,7 @@ h_2 = nS(:,2); %Wektor odpowiedzi skokowej - zak³ócenia
 % Identyfikacja bez zak³oceñ:
 figure
 plot(t,h) %Wyœwietlenie odp skokowej z pomiarów
-title('OdpowiedŸ skokowa i impulsowa bez zak³óceñ')
+title('OdpowiedŸ skokowa i impulsowa bez zak³óceñ - 1.2.1')
 grid on
 hold on
 % OdpowiedŸ impulsowa
@@ -42,7 +42,7 @@ hold on
 step(Gm2)
 grid on
 hold off
-title('Odpowiedzi skokowe bez zak³óceñ')
+title('Odpowiedzi skokowe bez zak³óceñ - 1.2.1')
 legend('pomiar','model')
 subplot(2,1,2)
 plot(t,g,'r')
@@ -58,7 +58,7 @@ legend('pomiar','model')
 % Identyfikacja pomiary z zak³óceniami:
 figure
 plot(t_2,h_2) %Wyœwietlenie odp skokowej z pomiarów
-title('OdpowiedŸ skokowa i impulsowa - zak³ócenia')
+title('OdpowiedŸ skokowa i impulsowa - zak³ócenia - 1.2.2')
 grid on
 hold on
 % OdpowiedŸ impulsowa

@@ -7,7 +7,7 @@ h = S.S(:,2); %wektor odpowiedzi skokowej
 % 2 - Wykreœliæ sekwencjê próbek odpowiedzi skokowej i oszacowaæ wzmocnienie statyczne systemu.
 figure
 plot(t,h)
-title('OdpowiedŸ skokowa systemu')
+title('OdpowiedŸ skokowa systemu - 1.1.2')
 grid on
 % Wzmocnienie statyczne systemu = 0.5 (odczytane z wykresu)
 % 0.5*0.5 = 0.25<-T50 , 0.5*0.9 = 0.45<-T90
@@ -34,7 +34,7 @@ hold on
 plot(t,h,'r')
 grid on
 hold off
-title('Odpowiedzi skokowe systemów')
+title('Odpowiedzi skokowe systemów- 1.1.2')
 legend('Model matlab','pomiary')
 subplot(2,1,2)
 plot(t,g,'r')
@@ -42,7 +42,7 @@ hold on
 impulse(Gm1)
 grid on
 hold off
-title('Odpowiedzi impulsowe systemów')
+title('Odpowiedzi impulsowe systemów - 1.1.2')
 legend('pomiary','Model matlab')
 % 3 - Powtórzyæ powy¿sz¹ procedurê identyfikacji dla przypadku danych zak³óconych
 load('NoisyProcessStepResponse.mat') %ns
@@ -50,7 +50,7 @@ t_2 = nS(89:end,1)-8.7; %Wektro czasu
 h_2 = nS(89:end,2); %Wektor odpowiedzi skokowej
 figure
 plot(t_2,h_2)
-title('OdpowiedŸ skokowa systemu - zak³ócenia')
+title('OdpowiedŸ skokowa systemu - zak³ócenia - 1.1.3')
 grid on
 % Wzmocnienie statyczne systemu = 0.24 (odczytane z wykresu)
 % 0.24*0.5 = 0.12 <- T50 , 0.24*0.9 = 0.2160 <- T90
@@ -76,7 +76,7 @@ hold on
 plot(t_2,h_2,'r')
 grid on
 hold off
-title('Odpowiedzi skokowe systemów - zak³ócone')
+title('Odpowiedzi skokowe systemów - zak³ócone - 1.1.3')
 legend('Model matlab','pomiary')
 subplot(2,1,2)
 plot(t_2,g2,'r')
@@ -84,5 +84,5 @@ hold on
 impulse(Gm1_2)
 grid on
 hold off
-title('Odpowiedzi impulsowe systemów')
+title('Odpowiedzi impulsowe systemów - 1.1.3')
 legend('pomiary','Model matlab')
