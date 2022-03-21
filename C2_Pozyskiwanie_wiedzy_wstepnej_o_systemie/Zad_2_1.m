@@ -4,8 +4,8 @@ sigma2v = 0; %wariancja zak³ócenia v
 N = 1001; 
 tend = 1000; %czas symulacji, czy tyle powinien wynosiæ? 
 
-y = Zdata(:,1);
-u = Zdata(:,2);
+u = Zdata(:,1);
+y = Zdata(:,2);
 
 %Zadanie 2_1_2 wyœwietliæ dane pomiarowe w dziedzinie czasu (Go(z)):
 figure

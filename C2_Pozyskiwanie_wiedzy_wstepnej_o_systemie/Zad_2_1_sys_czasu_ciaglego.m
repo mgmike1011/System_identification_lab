@@ -4,8 +4,8 @@ sigma2v = 0.001;
 M = 30;
 tend = 1000;
 
-y = Zdata(:,1);
-u = Zdata(:,2);
+u = Zdata(:,1);
+y = Zdata(:,2);
 
 for i=1:1:N
    ryu(i) = Covar([y u], i-1); % korelacja wzajemna yu
