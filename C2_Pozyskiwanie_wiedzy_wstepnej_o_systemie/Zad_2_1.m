@@ -3,7 +3,10 @@ Tp = 1; %okres próbkowania
 sigma2v = 0; %wariancja zak³ócenia v
 N = 1001; 
 tend = 1000; %czas symulacji, czy tyle powinien wynosiæ? 
- 
+
+y = Zdata(:,1);
+u = Zdata(:,2);
+
 %Zadanie 2_1_2 wyœwietliæ dane pomiarowe w dziedzinie czasu (Go(z)):
 figure
 subplot(2,1,1)
@@ -16,8 +19,6 @@ title('u(n) wejœciowy sygna³ pobudzaj¹cy')
 %title(currentFigure.Children(end), 'Wykresy w dziedzinie czasu');
 
 %Zadanie 2_1_3 
-%y = Zdata(:,1);
-%u = Zdata(:,2);
 M = 20;
  
 for i=1:1:N
