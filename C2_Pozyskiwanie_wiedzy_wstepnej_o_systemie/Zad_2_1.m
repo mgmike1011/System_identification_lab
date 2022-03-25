@@ -63,7 +63,14 @@ legend('Odpowiedz systemu Go_z', 'Wzór 10', 'Wzór 11')
 title('Analiza korelacyjna - wzory (10), (11), system')
 axis([0 M -1 2]); 
 
-%Wariancja sigmav2 na jakoœæ:
+% Wariancja sigmav2 na jakoœæ:
+% sigmav2 = 0 dobre odwzorowanie (wzór 10 daje "p³ynny" przebieg, wzór 11
+% taki "powyginany")
 
+% sigmav2 = 0.001 dobre odwzorowanie
 
+% sigmav2 = 0.01 %wzór 10 - dobre odwzorowanie, wzór 11 - trochê gorzej
 
+% sigmav2 = 0.1
+
+%zmiana sigmav2 nie wp³ynê³o na jakoœæ identyfikacji 

@@ -1,6 +1,6 @@
 clear variables, close all; clc;
 %% 3.1.2 Zebranie danych pomiarowych i wyœwietlenie w dziedzinie czasu:
-sim('AWident'); %Zebranie danych
+sim('AWident_2015'); %Zebranie danych
 u = Zdata(:,1)';
 y = Zdata(:,2)';
 t = (0:N-1)*Tp;
@@ -10,14 +10,14 @@ plot(t,u)
 axis([0 max(t) min(u) max(u)])
 xlabel('Czas t')
 grid on
-title("Sygna³ u(t)")
+title('Sygna³ u(t)')
 subplot(2,1,2)
 plot(t,y)
 axis([0 max(t) min(y) max(y)])
 xlabel('Czas t')
 grid on
-title("Sygna³ y(t)")
-sgtitle('Odpowiedzi czasowe')
+title('Sygna³ y(t)')
+%sgtitle('Odpowiedzi czasowe')
 %% 3.1.3 Przeprowadziæ nieparametryczn¹ identyfikacjê systemu czasu ci¹g³ego
 % Dla wzoru 15:
 DFT_Y = fft(y)*Tp;
@@ -34,14 +34,14 @@ fi_G_N_gwiazdka = angle(G_N_gwiazdka(1:501));
 subplot(2,1,1)
 semilogx(wk,Lm_G_N_gwiazdka);
 grid on
-title("Lm(w)")
+title('Lm(w)')
 xlabel('w')
 subplot(2,1,2)
 semilogx(wk,fi_G_N_gwiazdka)
 grid on
-title("fi(w)")
-xlabel("w")
-sgtitle('G_N* - wzór 15')
+title('fi(w)')
+xlabel('w')
+%sgtitle('G_N* - wzór 15') %zakomentowane dla bieda wersji 2016:(
 % Dla wzoru 16
 Mw = 200; %Okno Hanninga
 ruu = xcorr(u);
