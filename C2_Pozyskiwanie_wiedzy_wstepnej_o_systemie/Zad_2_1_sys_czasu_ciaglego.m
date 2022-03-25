@@ -6,7 +6,8 @@ tend = 1000;
 
 u = Zdata(:,1);
 y = Zdata(:,2);
-
+ryu = zeros(1,N);
+ruu = zeros(1,N);
 for i=1:1:N
    ryu(i) = Covar([y u], i-1); % korelacja wzajemna yu
    ruu(i) = Covar([u u], i-1); % autokorelacja u
@@ -21,6 +22,7 @@ ruuo=ruu(M:-1:1); % odwrócenie osi
 ruuo=ruuo(1:M-1); % zmniejszenie liczby próbek odwróconego
 ru=[ruuo  ruu]; % po³¹czenie sygna³u z jego odbiciem
 
+Ruu = zeros(M,M);
 for i=1:1:M
     for j=1:1:M
         Ruu(j,i)=ru(i-j+M); % Macierz Ruu

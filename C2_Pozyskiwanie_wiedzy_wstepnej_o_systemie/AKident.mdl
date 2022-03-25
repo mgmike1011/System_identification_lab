@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.17"
+    ComputedModelVersion    "1.18"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -44,6 +44,8 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
+  InitFcn		  "Tp = 1; %okres próbkowania \nsigma2v = 0; %wariancja zak³ócenia v\nN = 1001; \ntend = 1000; %czas symula"
+  "cji, czy tyle powinien wynosiæ? "
   LastSavedArchitecture	  "win64"
   Object {
     $PropName		    "BdWindowsInfo"
@@ -54,7 +56,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [259.0, 52.0, 811.0, 706.0]
+      Location		      [-7.0, -7.0, 1550.0, 838.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -63,7 +65,7 @@ Model {
 	DockPosition		"Left"
 	Width			[50]
 	Height			[50]
-	Filter			[8]
+	Filter			[9]
 	Minimized		"Unset"
       }
       Object {
@@ -80,10 +82,10 @@ Model {
 	IsTabbed		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[951.0, 589.0]
+	Extents			[1875.0, 755.0]
 	ZoomFactor		[1.0]
-	Offset			[3.2140625000000114, 30.09999999999998]
-	SceneRectInView		[3.2140625000000114, 30.09999999999998, 760.8, 471.2]
+	Offset			[-500.54555995198632, -106.05]
+	SceneRectInView		[-500.54555995198632, -106.05, 1500.0, 604.0]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -104,7 +106,7 @@ Model {
       "AAAAAAA+wAAABYARABvAGMAawBXAGkAZABnAGUAdAA0AAAAAAD/////AAAAAAAAAAD7AAAAUgBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0Ac"
       "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAAB5AP///wAAAAEAAAAAAAAAAPwCA"
       "AAAAfsAAABUAEcATABVAEUAMgA6AFAAcgBvAHAAZQByAHQAeQBJAG4AcwBwAGUAYwB0AG8AcgAvAFAAcgBvAHAAZQByAHQAeQAgAEkAbgBzAHAAZ"
-      "QBjAHQAbwByAAAAAAD/////AAAARgD///8AAAPkAAACkwAAAAEAAAACAAAAAQAAAAL8AAAAAA=="
+      "QBjAHQAbwByAAAAAAD/////AAAARgD///8AAAeAAAADOQAAAAEAAAACAAAAAQAAAAL8AAAAAA=="
       Array {
 	Type			"Cell"
 	Dimension		0
@@ -112,7 +114,7 @@ Model {
       }
       WindowUuid	      "bf610f32-8c74-4527-8bf9-bff4f160cd17"
     }
-    BDUuid		    ""
+    BDUuid		    "773a8976-bae4-43e3-8263-3ca9d494a758"
   }
   HideAutomaticNames	  on
   Created		  "Sun Mar 15 19:46:16 2009"
@@ -121,9 +123,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "mgmil"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Mar 21 09:30:58 2022"
-  RTWModifiedTimeStamp	  569752817
-  ModelVersionFormat	  "1.%<AutoIncrement:17>"
+  LastModifiedDate	  "Fri Mar 25 11:17:14 2022"
+  RTWModifiedTimeStamp	  570107433
+  ModelVersionFormat	  "1.%<AutoIncrement:18>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -1221,7 +1223,7 @@ Model {
   }
   System {
     Name		    "AKident"
-    Location		    [259, 52, 1070, 758]
+    Location		    [-7, -7, 1543, 831]
     Open		    on
     PortBlocksUseCompactNotation off
     SetExecutionDomain	    off
