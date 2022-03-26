@@ -2,7 +2,6 @@ close all
 clear;
 clc;
 
-Tp = 1.0;
 sim('AWident_2015')
 u = Zdata(:,1);
 y = Zdata(:,2);
@@ -29,7 +28,7 @@ for k = 1:2*N-1;
 end
 
 k2 = 0:1:(N-1)/2;
-omega_k = 2*pi*k2/ (N*Tp);
+omega_k = 2*pi*k2/(N*Tp);
 
 for i=1:1:N
 Gdaszek_N_16(i) = Phi_yu(i)./Phi_uu(i);
