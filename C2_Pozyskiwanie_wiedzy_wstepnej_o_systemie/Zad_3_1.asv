@@ -51,5 +51,23 @@ wk = ((2*pi)/N)*k; %Omega_k
 % Ruu = [ruuP(1:Mw+1) zeros(1,2*N-2*Mw-2) ruuP(Mw+1:-1:2)]
 
 % Okno Hanninga
+w_h = hann(2*Mw);
+for i = 1:2*N-1;
+    ru(i) = Covar([u u],i-N-1);
+    ryu_(i) = Covar([y u],i-N-1); 
+end
 
+i = -M:1:M;
 
+okno = ones(1,2*M+1);
+okno = 0.5*(cos(i*pi/M)+1);
+
+ru1 = ru(N-M:N+M);
+ryu1 = ryu_(N-M:N+M);
+
+for k = 1:2*N-1;
+  W = exp(-j*2*pi*i*k/N) .* okno;
+  fi_u(k) = ru1 * W';
+  fi_yu(k) = ryu1 * W'; 
+  
+end
