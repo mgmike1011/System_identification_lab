@@ -36,7 +36,7 @@ end
 
 figure;
 Lm_G_N_16 =  20*log10(abs(Gdaszek_N_16(1:501))); %bo omega_k 1:501
-fi_G_N_16 = angle(Gdaszek_N_16(1:501));
+fi_G_N_16 = -1*atan2(imag(Gdaszek_N_16(1:501)), real(Gdaszek_N_16(1:501)));
 
 % Charakterystyka Bodego:
 subplot(2,1,1)

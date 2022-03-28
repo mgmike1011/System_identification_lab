@@ -1,9 +1,10 @@
 % Zmienne zadeklarowane przed uruchomieniem AKident.mdl
+
 Tp = 1; %okres próbkowania 
 sigma2v = 0; %wariancja zak³ócenia v
 N = 1001; 
 tend = 1000; %czas symulacji, czy tyle powinien wynosiæ? 
-
+sim('AKident_2015')
 u = Zdata(:,1);
 y = Zdata(:,2);
 

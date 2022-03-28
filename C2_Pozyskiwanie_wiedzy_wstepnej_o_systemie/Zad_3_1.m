@@ -1,4 +1,4 @@
-clear variables, close all; clc;
+clear variables, close all; %clc;
 %% 3.1.2 Zebranie danych pomiarowych i wyœwietlenie w dziedzinie czasu:
 sim('AWident_2015'); %Zebranie danych
 u = Zdata(:,1)';

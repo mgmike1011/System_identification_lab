@@ -4,6 +4,7 @@ sigma2v = 0.1;
 M = 30;
 tend = 1000;
 
+
 u = Zdata(:,1);
 y = Zdata(:,2);
 ryu = zeros(1,N);
@@ -32,7 +33,7 @@ end
 pseudoodwrotna_Ruu = pinv(Ruu);
 g_12_1 = pseudoodwrotna_Ruu*ryu'/Tp; 
 
-g12_2_ = zeros(length(1:1:M));
+g12_2_ = zeros(1,length(1:1:M));
 for i = 1:1:M
     g12_2_(i) = ryu(i) / ruu(1);
 end
@@ -82,6 +83,7 @@ step(G,M)
 grid on
 legend('model', 'Odpowiedz prawidlowa obiektu')
 
+% ten poprawny, bo model dyskretny 
 % próbki (stem):
 figure('Name','Odpowiedz skokowa - próbki')
 step(G, M)

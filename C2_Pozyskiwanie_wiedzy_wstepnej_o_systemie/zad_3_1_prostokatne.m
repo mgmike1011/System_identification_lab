@@ -7,21 +7,26 @@ for i = 1:2*N-1;
     ru(i) = Covar([u u],i-N-1);
     ryu(i) = Covar([y u],i-N-1); 
 end
+ruu_ = [flip(ru) ru];
+ryu_ = [flip(ryu) ryu];
 
 % z = zeros(N-M);
 % o = ones(M);
-% okno_prostokatne = [o(1,:) z(1,:)];
-okno_prostokatne = rectwin(2*M+1);
-okno_prostokatne = okno_prostokatne';
+%okno_prostokatne = [o(1,:) z(1,:)];
+
+%okno_prostokatne = rectwin(2*M+1);
+
+%okno_prostokatne = okno_prostokatne';
 
 ru1 = ru(N-M:N+M); %Zmniejszenie liczby próbek
 ryu1 = ryu(N-M:N+M); %Zmniejszenie liczby próbek
 
-for k = 1:2*N-1;
-  exp_razy_okno = exp(-j*2*pi*i*k/N) .* okno_prostokatne;
-  Phi_uu(k) = ru1 * exp_razy_okno';
-  Phi_yu(k) = ryu1 * exp_razy_okno'; 
-  
+Phi_uu = [];
+Phi_yu = [];
+for k = 1:4002;
+%   exp_razy_okno = exp(-j*2*pi*i*k/N) .* okno_prostokatne;
+  Phi_uu = [Phi_uu ruu_(k:M)*exp(-1j*2*pi*k/N)];
+  Phi_yu = [Phi_yu ryu_(k:M)*exp(-1j*2*pi*k/N)]; 
 end
 
 exp_razy_okno = exp_razy_okno';
