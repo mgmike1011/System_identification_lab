@@ -98,16 +98,23 @@ xlabel('Czas')
 plot(t(1:2001),Z_wer_C_yw)
 plot(t(1:2001),lsim(Go,Z_wer_W_u,t(1:2001)))
 plot(t(1:2001),lsim(Go,Z_wer_C_u,t(1:2001)))
-% Odpowiedz predyktora?????????????????????????????????
+Z_wer_W_yw_zero = [0;Z_wer_W_yw(1:end)];
+y_n_n_1 = (1-(1+T_est_W*Z_wer_W_yw_zero(1:end-1))).*Z_wer_W_yw +k_est_W.*Z_wer_W_u;
+Z_wer_C_yw_zero = [0;Z_wer_C_yw(1:end)];
+y_n_n_1_C = (1-(1+T_est_C*Z_wer_C_yw_zero(1:end-1))).*Z_wer_C_yw +k_est_C.*Z_wer_C_u;
+plot(t(1:2001),y_n_n_1)
+plot(t(1:2001),y_n_n_1_C)
 plot(t(1:2001),lsim(tf(k_est_C,[T_est_C 1]),Z_wer_C_u,t(1:2001)))
 plot(t(1:2001),lsim(tf(k_est_W,[T_est_W 1]),Z_wer_W_u,t(1:2001)))
-legend('y(n) - Zwer White','y(n) - Zwer Color','Odpowiedü niezak≥Ûcona yo(n) - Zwer White','Odpowiedü niezak≥Ûcona yo(n) - Zwer Color','ym(n) - Zwer Color','ym(n) - Zwer White')
+legend('y(n) - Zwer White','y(n) - Zwer Color','Odpowiedü niezak≥Ûcona yo(n) - Zwer White','Odpowiedü niezak≥Ûcona yo(n) - Zwer Color','Predyktor White','Predyktor Color','ym(n) - Zwer Color','ym(n) - Zwer White')
     % Ocena jakoúciowa oraz iloúciowa wyniku identyfikacji:
 % Bliøsze prawdziwym wartoúci sπ wyniki uzsykane dla szumu bia≥ego,
 Wm_W = 1/length(Z_wer_W_yw)*sum((lsim(Go,Z_wer_W_u,t(1:2001))-(lsim(tf(k_est_W,[T_est_W 1]),Z_wer_W_u,t(1:2001)))).^2);
 Wm_C = 1/length(Z_wer_C_yw)*sum((lsim(Go,Z_wer_C_u,t(1:2001))-(lsim(tf(k_est_C,[T_est_C 1]),Z_wer_C_u,t(1:2001)))).^2);
-% Vp_W = ????????????????????????
-% Vp_C = ????????????????????????
+Vp_W = 1/length(Z_wer_W_yw)*sum((Z_wer_W_yw - y_n_n_1).^2);
+Vp_C = 1/length(Z_wer_C_yw)*sum((Z_wer_C_yw - y_n_n_1_C).^2);
+disp("Wm_White: "+ Wm_W+" Vp_White: " + Vp_W)
+disp("Wm_Color: "+ Wm_C+" Vp_Color: " + Vp_C)
 % 
 % Zad 2.1.6
 % 
