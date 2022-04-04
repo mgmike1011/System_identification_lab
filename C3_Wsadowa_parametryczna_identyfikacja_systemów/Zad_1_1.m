@@ -1,6 +1,12 @@
+clear variables; clc;
 load IdentWsadowaStat.mat % ladowanie danych
 N = length(DaneStatW); % iloœæ próbek (2501)
 d = 4; % z instrukcji ze wzoru 6
+
+% SZUM BIA£Y
+% rozdzielenie danych na wejœcie i wyœcie
+u = DaneStatW(1:1:N,1); % pomiary zaklocone szumen bia³ym
+y = DaneStatW(1:1:N,2); % pomiary zaklocone szumem bia³ym 
 
 % Wyswietlenie danych pomiarowych
 figure
@@ -8,11 +14,6 @@ plot(u,y, 'o')
 title('Wykres wyjœcia od wejœcia')
 xlabel('Wejœcie u')
 ylabel('Wyjœcie y')
-
-% SZUM BIA£Y
-% rozdzielenie danych na wejœcie i wyœcie
-u = DaneStatW(1:1:N,1); % pomiary zaklocone szumen bia³ym
-y = DaneStatW(1:1:N,2); % pomiary zaklocone szumem bia³ym 
 
 fi = zeros(N, d); % utworzenie regresora jako macierzy 0, duze Phi
 fi(:,1) = 1; % 1 w pierwszej kolumnie
@@ -37,6 +38,7 @@ y1_estyma_kolor = fi1*p1_estymator_LS_kolor; % pod wzorem (2)
 
 % Wykres danych pomiarowych i zidentyfikowanych odwzorowañ: 
 % Szum bia³y, DaneStatW
+figure
 subplot(2,1,1);
 plot(u, y, 'o') 
 hold on
@@ -59,7 +61,7 @@ hold off
 
 % Macierz kowariancji dla danych zaklóconych szumem bialym
 ei = y - y_estyma; % ei - b³¹d resztowy wzór (5)
-sigma2 = 1 / (N - d) * sum(ei.^2) % estymata wariancji zak³ócenia (5)
+sigma2 = 1 / (N - d) * sum(ei.^2); % estymata wariancji zak³ócenia (5)
 cov = sigma2 * inv(fi'*fi); % obliczenie kowariancji wzór 5
 
 % Okreœlanie przedzia³ow ufnoœci dla 95% instrukcja wzór 22 i 23
