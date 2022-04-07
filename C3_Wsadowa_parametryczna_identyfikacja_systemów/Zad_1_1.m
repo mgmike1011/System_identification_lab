@@ -1,4 +1,6 @@
 load IdentWsadowaStat.mat % ladowanie danych
+% Sprawdziæ wp³yw liczby N np. co dziesi¹ta para:
+% np. u = DaneStatW(1:10:N,1); % pomiary zaklocone szumen bia³ym
 N = length(DaneStatW); % iloœæ próbek (2501)
 d = 4; % z instrukcji ze wzoru 6
 
@@ -53,9 +55,6 @@ plot(u_kolor, y1_estyma_kolor, 'r')
 grid on
 title('Dane pomiarowe oraz zidentyfikowane odwzorowanie z szumem kolorowym')
 hold off
-
-% Sprawdziæ wp³yw liczby N np. co dziesi¹ta para:
-% np. u = DaneStatW(1:10:N,1); % pomiary zaklocone szumen bia³ym
 
 % Macierz kowariancji dla danych zaklóconych szumem bialym
 ei = y - y_estyma; % ei - b³¹d resztowy wzór (5)
