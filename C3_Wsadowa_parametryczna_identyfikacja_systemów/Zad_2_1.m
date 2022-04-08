@@ -86,7 +86,7 @@ p_N_LS_C = ((fi_C'*fi_C)^(-1))*fi_C'*yc;
 T_est_W = 0.505; k_est_W = 2.0605;
     % Wyniki estymacji parametrów dla kolorowego:
 T_est_C = 0.23137; k_est_C = 1.4373;
-% Lepsze wyniki dla bia³ego!!! Zapytaæ?????????????????????
+% Lepsze wyniki dla bia³ego!!!
 % 
 % Zad 2.1.5
 % 
