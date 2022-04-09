@@ -50,7 +50,7 @@ plot(t,DaneDynC_yw)
 grid on
 title('Sygna³ yw - zak³ócenie kolorowe')
 xlabel('Czas t')
-sgtitle('Zad 2.1.2 - wyœwietlenie danych')
+%sgtitle('Zad 2.1.2 - wyœwietlenie danych')
     % Podzia³ zbioru danych
 Z_est_W_u = DaneDynW_u(1:2000); % Dane estymuj¹ce - zak³ócenie bia³e
 Z_est_W_yw = DaneDynW_yw(1:2000); % Dane estymuj¹ce - zak³ócenie bia³e
@@ -113,8 +113,8 @@ Wm_W = 1/length(Z_wer_W_yw)*sum((lsim(Go,Z_wer_W_u,t(1:2001))-(lsim(tf(k_est_W,[
 Wm_C = 1/length(Z_wer_C_yw)*sum((lsim(Go,Z_wer_C_u,t(1:2001))-(lsim(tf(k_est_C,[T_est_C 1]),Z_wer_C_u,t(1:2001)))).^2);
 Vp_W = 1/length(Z_wer_W_yw)*sum((Z_wer_W_yw - y_n_n_1).^2);
 Vp_C = 1/length(Z_wer_C_yw)*sum((Z_wer_C_yw - y_n_n_1_C).^2);
-disp("Wm_White: "+ Wm_W+" Vp_White: " + Vp_W)
-disp("Wm_Color: "+ Wm_C+" Vp_Color: " + Vp_C)
+disp('Wm_White: "+ Wm_W+" Vp_White: ' + Vp_W)
+disp('Wm_Color: "+ Wm_C+" Vp_Color: ' + Vp_C)
 % 
 % Zad 2.1.6
 % 
@@ -132,4 +132,4 @@ for i = 1:2
    prawo(i) = p_N_LS_W(i) + odchylenie; 
 end
 ufnosc = [lewo; prawo]';
-disp("Przedzia³ ufnoœci: "); ufnosc
+disp('Przedzia³ ufnoœci: '); ufnosc
