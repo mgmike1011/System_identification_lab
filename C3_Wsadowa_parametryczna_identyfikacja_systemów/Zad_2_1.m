@@ -113,15 +113,15 @@ Wm_W = 1/length(Z_wer_W_yw)*sum((lsim(Go,Z_wer_W_u,t(1:2001))-(lsim(tf(k_est_W,[
 Wm_C = 1/length(Z_wer_C_yw)*sum((lsim(Go,Z_wer_C_u,t(1:2001))-(lsim(tf(k_est_C,[T_est_C 1]),Z_wer_C_u,t(1:2001)))).^2);
 Vp_W = 1/length(Z_wer_W_yw)*sum((Z_wer_W_yw - y_n_n_1).^2);
 Vp_C = 1/length(Z_wer_C_yw)*sum((Z_wer_C_yw - y_n_n_1_C).^2);
-disp('Wm_White: "+ Wm_W+" Vp_White: ' + Vp_W)
-disp('Wm_Color: "+ Wm_C+" Vp_Color: ' + Vp_C)
+disp("Wm_White: "+ Wm_W+" Vp_White: " + Vp_W)
+disp("Wm_Color: "+ Wm_C+" Vp_Color: " + Vp_C)
 % 
 % Zad 2.1.6
 % 
 % Macierz kowariancji dla danych zaklóconych szumem bialym
 ei = Z_wer_W_yw - lsim(tf(k_est_W,[T_est_W 1]),Z_wer_W_u,t(1:2001)); % ei - b³¹d resztowy wzór (5)
 sigma2 = 1 / (N - 2) * sum(ei.^2); % estymata wariancji zak³ócenia (5)
-cov = sigma2 * inv(fi_W'*fi_W); % obliczenie kowariancji wzór 5
+cov = sigma2 * (fi_W'*fi_W)^(-1); % obliczenie kowariancji wzór 5
 
 % Okreœlanie przedzia³ow ufnoœci dla 95% instrukcja wzór 22 i 23
 lewo = zeros(1,2);
@@ -132,4 +132,5 @@ for i = 1:2
    prawo(i) = p_N_LS_W(i) + odchylenie; 
 end
 ufnosc = [lewo; prawo]';
-disp('Przedzia³ ufnoœci: '); ufnosc
+disp('Przedzia³ ufnoœci: '); disp(ufnosc);
+
