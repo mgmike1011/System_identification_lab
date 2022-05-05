@@ -1,0 +1,24 @@
+1. ps -> ps x -> ps ax
+2. ctrl+shift+t -> tty
+3. pstree
+4. top -o %CPU
+5. 	5.1 renice +10 1569
+	5.2 sleep 30
+	5.3 sleep 3600 &
+	5.4 jobs
+	5.5 ps -fe
+	5.6 bg
+	5.7 jobs
+	5.8 fg -> ctrl+C
+6. kill 1610 -> find ~ -name sleep_finished
+7. ps ax| grep mouse -> kill -STOP 1493 -> kill -CONT 1493
+8. chmod a-w -> cd readonly/ -> touch abc.txt -> echo ERROR
+9. cd proc/ -> ls -l /proc
+10. ps 7 : nie istnieje
+11. cd 1569 -> ls -l -> cat status 
+12. cat /proc/cpuinfo
+13. cat /proc/meminfo
+14. nano .bashrc -> zmienic -> zapis ctrl+o -> enter -> ctrl+x
+15. vim text.txt
+16. nano plik1.txt & -> nano plik2.txt & -> nano plik3.txt & -> jobs -> fg 2
+
