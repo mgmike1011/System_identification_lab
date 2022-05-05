@@ -1,0 +1,29 @@
+1. passwd
+2. id
+3. who
+4. man 7 hier
+5. ls
+6. ls /dev
+7. mkdir kat1
+8. mkdir kat1/kat2 && mkdir kat1/kat2/kat3 && mkdir kat1/kat2/kat3/kat4
+9. cd kat1/kat2 && rm -r kat3
+10. touch plik1.txt && touch plik2.txt && touch plik3.c && touch plik4.c
+11. cp ./*.txt kat1
+12. cp ./*.c kat1/kat2
+13. cp -r kat1 kat1b
+14. rm kat1/kat2/*
+15. rm -r kat1b
+16. mv kat1/plik1.txt kat1/plik11.txt
+17. mv kat1/kat2 ~/kat2b
+18. find /usr -name "mozilla"
+19. find /usr -type d -name "bin"
+20. find /usr/bin/ -size +10c -size -100c -type f -exec cp {} ~/kat1/kat2/ \;
+21. touch plik.txt && ls -l
+22. chmod o+w plik.txt 
+23. chmod u-w plik.txt 
+24. chmod o+x plik.txt
+25. chmod a=r plik.txt 
+26. chmod 777 plik.txt
+27. ln plik.txt plik2.txt
+28. ln -s kat1/kat2 ~/abc 
+
