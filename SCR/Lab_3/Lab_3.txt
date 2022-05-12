@@ -1,0 +1,9 @@
+1. cat < /etc/passwd | more -5 -> klikać z
+2. cat tekst1.txt tekst2.txt > tekst3.txt 
+3. head -n 5 *.* -q
+4. cat /etc/passwd | head -n 5 | tail -n 3
+5. cat /etc/passwd | tail -n 7 | head -n 3
+6. cat /etc/passwd | tr -d '\n' 
+7. cat /etc/passwd | tr ' ' '\n'
+8. find /etc/ -type f | wc -l
+9. 
