@@ -113,8 +113,8 @@ Wm_W = 1/length(Z_wer_W_yw)*sum((lsim(Go,Z_wer_W_u,t(1:2001))-(lsim(tf(k_est_W,[
 Wm_C = 1/length(Z_wer_C_yw)*sum((lsim(Go,Z_wer_C_u,t(1:2001))-(lsim(tf(k_est_C,[T_est_C 1]),Z_wer_C_u,t(1:2001)))).^2);
 Vp_W = 1/length(Z_wer_W_yw)*sum((Z_wer_W_yw - y_n_n_1).^2);
 Vp_C = 1/length(Z_wer_C_yw)*sum((Z_wer_C_yw - y_n_n_1_C).^2);
-disp("Wm_White: "+ Wm_W+" Vp_White: " + Vp_W)
-disp("Wm_Color: "+ Wm_C+" Vp_Color: " + Vp_C)
+disp('Wm_White: '+ Wm_W+' Vp_White: ' + Vp_W)
+disp('Wm_Color: '+ Wm_C+' Vp_Color: ' + Vp_C)
 % 
 % Zad 2.1.6
 % 
