@@ -15,4 +15,4 @@
 15. ls -l | sort -n +4 | head -n 3 | sort +9
 16. cat /etc/services | grep 'udp' | cut -f1
 17. ls /dev/ | grep 'tty[5-6][0-9]' | sort | wc -l
-18. ???
+18. pgrep cupsd
