@@ -6,4 +6,13 @@
 6. cat /etc/passwd | tr -d '\n' 
 7. cat /etc/passwd | tr ' ' '\n'
 8. find /etc/ -type f | wc -l
-9. 
+9. cat /etc/passwd | head -n 3 | wc -m
+10. find ./ -type f | tr '[:lower:]' '[:upper:]'
+11. ls -l | cut -d ' ' -f1,5,9 ???????? Problem z pomijaniem spacji w 5 kolumnie
+12. ls -l | sort -n +4
+13. cat /etc/passwd | sort -t ':' -n +3 -r
+14. cat /etc/passwd | sort -t ':' -n +2 -r & cat /etc/passwd | sort -t ':' -n +3 -r
+15. ls -l | sort -n +4 | head -n 3 | sort +9
+16. cat /etc/services | grep 'udp' | cut -f1
+17. ls /dev/ | grep 'tty[5-6][0-9]' | sort | wc -l
+18. ???
