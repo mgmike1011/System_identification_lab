@@ -1,0 +1,31 @@
+9. head -n 3 /etc/passwd | wc -c
+
+10. ls | tr '[a-z]' '[A-Z]'
+
+11.1 ls -l | cut -d ' '  -f1,5,11 -> nie wyswietla dobrze kolumny z rozmiarem,
+11.2 ls -l | awk '{print $1,$5,$9}' -> dobrze, ale znalezione w internecie
+11.3 ls -l | cut --bytes=1-10,34-42,56- -> dobrze dziala, ale czasochlonne
+
+12. ls -S
+
+13. cat /etc/passwd | sort -t ':' +3 -n -r
+13.1. cat /etc/passwd | sort -t ':' -k3 -n -r
+(sort -k -> sortowanie po okreslonym polu)
+
+14. cat /etc/passwd | sort -t ':' +4 -n -r | sort -t ':' +3 -n
+14.1 cat /etc/passwd | sort -t ':' -k4 -n -r | sort -t ':' -k3 -n
+
+15. ls -S -r | head -n 3 | sort +9
+
+16. cat /etc/services | grep udp | cut -f1
+
+17. ls /dev/ | grep 'tty[5-6][0-9]'
+17.1 ls /dev/ | grep 'tty[5-6][0-9]' | wc -l -> wyswietla liczbe terminali
+
+
+18. pgrep cupsd
+18.1 pidof cupsd
+
+Legenda:
+
+jesli cos ma podpunkty, to znaczy ze to sa rozne rozwiazania tego samego zadania
