@@ -37,15 +37,14 @@ uF = lsim(F0,Z_est_W_u,t,'foh'); % filtracja SVF filtrem F^0 sekwencji u z ekstr
     % Estymacja parametrów dla filru z yF:
 fi_W = zeros(2000-1,2);
 for i = 2:2000-1
-    fi_W(i,1) = yF(i);
+    fi_W(i,1) = -yF(i);
     fi_W(i,2) = uF(i);
 end
 yw = ypF(2:end);
 p_N_LS_W = ((fi_W'*fi_W)^(-1))*fi_W'*yw;
 % Na podstawie estymacji:
-To_est = -1/p_N_LS_W(1);
+To_est = 1/p_N_LS_W(1);
 ko_est = To_est*p_N_LS_W(2);
-% Zapytaæ o minus????????????????????????????????????????
 % 
 % Zad 3.5
 % 
