@@ -64,9 +64,9 @@ p_rels = zeros(4,length(u));
 P_trace_rels = trace(P1_rels);
 % Zapis w postaci regresji liniowej: 
     % y(n) = [-y(n-1) -y(n-2) u(n-2) e(n-1)]*[a1; a2; b2; c1] + e(n)
-fi_rels = [-y1_rels;-y2_rels;u2_rels;y(1)];
+fi_rels = [-y1_rels;-y2_rels;u2_rels;y2_rels];
 for i = 1:length(u)
-    e1_rels = y(i) - fi_rels'*p1_rels;
+    e1_rels = y1_rels - fi_rels'*p1_rels;
     fi_rels = [-y1_rels;-y2_rels;u2_rels;e1_rels]; % Regresor
     P_rels = P1_rels - (((P1_rels*fi_rels)*fi_rels'*P1_rels)/(1+fi_rels'*P1_rels*fi_rels)); % Macierz kowariancyjna
     k_rels = P_rels*fi_rels; % Wzmocnienie
@@ -85,10 +85,10 @@ for i = 1:length(u)
     u1_rels = u(i);
     P_trace_rels = [P_trace_rels; trace(P_rels)];
 end
-% a1o = -0.908 - > 
-% a2o = -0.0689 - > a powinno byæ -0.1
-% b2o = 0.1126 - > a powinno byæ 0.5
-% c1o = 0.805 - > a powinno byæ 0.99
+% a1o = -0.7878 - > a powinno byæ -0.8
+% a2o = -0.1122 - > a powinno byæ -0.1
+% b2o = 0.5008 - > a powinno byæ 0.5
+% c1o = 0.6843 - > a powinno byæ 0.99
 % Wyœwietlenie wyników 
 subplot(2,1,1)
 plot(p(1,:))
