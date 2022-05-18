@@ -176,7 +176,7 @@ plot(P_trace)
 title('Œlad macierzy P^{LS} podczas estymacji')
 
 % Zad 1.1.7
-%%    % Model symulowany:
+    % Model symulowany:
 ym_biezace = zeros(1,length(u));
 for i = 1:length(u)
     out = lsim(filt([0 0 p(3,i)],[1 p(1,i) p(2,i)],Tp),u,t);
@@ -193,6 +193,7 @@ for i=1:length(u)
     yn_biezace(i) = (1-A)+B;
 end
 % Wyœwietlenie wyników:
+figure
 subplot(3,1,1)
 sgtitle('Zad 1.1.7 - porównanie wyników')
 plot(ym_biezace)
