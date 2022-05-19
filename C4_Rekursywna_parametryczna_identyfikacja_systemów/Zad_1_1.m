@@ -15,6 +15,9 @@ Td = 1500; % [s] - czas zmiany parametru b2
 global c1o;
 c1o = 0;
 % Symulacja
+global P1_ p1_
+P1_ = eye(3);
+p1_ = [0;0;0];
 sim('SystemARMAX.mdl')
 % Dane z symulacji
 u = simout(:,1);
@@ -173,3 +176,40 @@ plot(P_trace)
 title('Œlad macierzy P^{LS} podczas estymacji')
 
 % Zad 1.1.7
+    % Model symulowany:
+ym_biezace = zeros(1,length(u));
+for i = 1:length(u)
+    out = lsim(filt([0 0 p(3,i)],[1 p(1,i) p(2,i)],Tp),u,t);
+    ym_biezace(i) = out(i);
+end
+    % Predyktor jednokrokowy:
+yn_biezace = zeros(1,length(u));
+y1__ = [0;y];
+y2__ = [0;0;y];
+u2__ = [0;0;u];
+for i=1:length(u)
+    A = 1 + p(1,i)*y1__(i) + p(2,i)*y2__(i);
+    B = p(3,i)*u2__(i);
+    yn_biezace(i) = (1-A)+B;
+end
+% Wyœwietlenie wyników:
+figure
+subplot(3,1,1)
+sgtitle('Zad 1.1.7 - porównanie wyników')
+plot(ym_biezace)
+hold on
+plot(yo)
+legend('ym','yo')
+title('Odpowiedz modelu symulowanego ym(n) z odpowiedzia niezak³ócona yo(n)')
+subplot(3,1,2)
+plot(yn_biezace)
+hold on
+plot(y)
+legend('y(n|n-1)','y')
+title('Odpowiedz predyktora jednokrokowego ?y(n|n ? 1) z zak³ócona odpowiedzia y(n) systemu')
+subplot(3,1,3)
+plot(ym_biezace)
+hold on
+plot(y)
+legend('ym','y')
+title('Odpowiedz modelu symulowanego ym(n) z odpowiedzia y(n) systemu.')
