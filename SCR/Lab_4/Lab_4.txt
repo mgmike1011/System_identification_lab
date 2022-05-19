@@ -1,0 +1,43 @@
+1. IMIE=AGA -> echo $IMIE -> export IMIE
+2. env
+3. PS1=AGA
+Z instrukcji:
+nano skrypt_1.sh -> chmod +x skrypt_1.sh -> ./skrypt_1.sh abc xyz 12345
+4.                                  
+###############################################
+#!/bin/bash
+
+for  file in *
+do
+        if  [ -f $file ]
+        then
+                echo "Plik: $file"
+        else
+                echo "Folder: $file"
+        fi 
+done
+###############################################
+5. 
+###############################################
+#!/bin/bash
+
+for file in $*
+do
+        echo "$file"
+        sort $file
+done
+###############################################
+Dla pizd: ./zad5.sh zad4.sh skrypt_1.sh 
+
+6.
+###################################################                           
+#!/bin/bash
+file=$1
+shift 
+for katalog in $*
+do
+        cp $file $katalog
+done
+################################################
+7.
+###############################################
