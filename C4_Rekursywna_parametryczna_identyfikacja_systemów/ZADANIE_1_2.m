@@ -1,0 +1,44 @@
+%% Czesc 1. do odpalenia simulinka
+global Tp Tend Td
+Tp = 0.1; %okres probkowania
+Tend = 1000; % horyzont czasowy symulacji
+Td = 1500; % czas, po ktorym jest zmiana b2o
+
+global c1o
+c1o = 0.99; % wymuszenie zaklocenia kolorowego w rownaniu regresji
+
+fu = 0.025; % czestotliwosc sygnalu prostokatnego 
+
+global PIV_1 phatIV_1 % P - macierz kowariancyjna, p - estymata wektora
+roIV = 100; % wartosc do inicjalizowania macierzy kowariancyjnej P^IVch - mnoznik
+d = 3; % liczba estymowanych parametrow (a1o, b2o, a2o)
+PIV_1 = roIV * eye(d); % warunek poczatkowy P^IV(0) z wyboru arbitralnego ro*I
+phatIV_1 = [0; 0; 0]; % estymata wektora parametrow: a1 a2 b2 - warunek poczatkowy
+
+global trace_P_IV % Slad macierzy
+trace_P_IV = trace(PIV_1); % Slad macierzy warunek poczatkowy
+
+
+%% Wykreslanie wykresow - po symulacji w Simulinku
+sim('ARMAX_ZADANIE_1_2');
+
+figure;
+
+plot(time, y, time, ym_RIV, time, yo);
+grid on;
+title('Porownanie y[n], ym[n] oraz y0[n] metody RIV');
+legend('odpowiedz obiektu - y[n]', 'odpowiedz modelu symulowanego - ym[n]', 'odpowiedz idealna obiektu - y0[n]');
+
+figure;
+
+plot(time, y, time, y_pred_RIV);
+grid on;
+title('Porownanie y[n] oraz y^[n|n-1] metody RIV');
+legend('odpowiedz obiektu - y[n]', 'odpowiedz predyktora jednokrokowego - y^[n|n-1]');
+
+figure;
+
+plot(time, trace_P_IV(3:10003));
+grid on;
+title('Slad P_R_I_V');
+legend('przebieg sladu macierzy P_RIV');
