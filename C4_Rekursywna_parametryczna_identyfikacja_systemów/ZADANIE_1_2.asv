@@ -24,25 +24,17 @@ sim('ARMAX_ZADANIE_1_2');
 
 figure;
 
-plot(time, ym_RIV, time, y);
-grid on;
-title('Porownanie ym[n] oraz y[n] metoda RIV');
-legend('odpowiedz modelu symulowanego - ym[n]', 'odpowiedz zaklocona obiektu - y[n]');
-
-figure;
-
 plot(time, ym_RIV, time, yo);
 grid on;
 title('Porownanie ym[n] symulowana oraz yo[n] niezaklocona metody RIV');
 legend('odpowiedz modelu symulowanego - ym[n]', 'odpowiedz idealna obiektu - yo[n]');
-
 
 figure;
 
 plot(time, y, time, y_pred_RIV);
 grid on;
 title('Porownanie y[n] oraz y^[n|n-1] metody RIV');
-legend('Zaklocona odpowiedz obiektu - y[n]', 'odpowiedz predyktora jednokrokowego - y^[n|n-1]');
+legend('odpowiedz obiektu - y[n]', 'odpowiedz predyktora jednokrokowego - y^[n|n-1]');
 
 figure;
 
