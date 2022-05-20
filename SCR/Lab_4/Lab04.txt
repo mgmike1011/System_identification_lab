@@ -1,0 +1,36 @@
+7. 
+#################################
+
+#!/bin/bash
+
+for file in $*
+do
+if [ -e ~/backup ]; then 
+        cp $file ~/backup/$file$(date '+%Y-%m-%d')
+else
+        mkdir ~/backup
+fi
+done
+
+8.
+##################################
+#!/bin/bash
+
+while [ ! -e $1 ];
+do
+
+sleep 5;
+done
+
+cat $1
+
+9.
+##################################
+#!/bin/bash
+l1=$1;
+l2=$2;
+ let result=l1+l2
+echo $result
+
+
+
