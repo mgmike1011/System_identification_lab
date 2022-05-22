@@ -82,7 +82,7 @@ plot(ym)
 grid on
 plot(yn)
 legend('y(n)','yo(n)','ym','yn')
-sgtitle('Wyniki identyfikacji')
+%sgtitle('Wyniki identyfikacji')
 % Zad 1.1.5
     % dla ro = 1
 p_hat_LS_ro_1 = p;
@@ -169,7 +169,7 @@ plot(p_hat_LS_ro_01(3,:))
 hold off
 title('0.1')
 legend('a1','a2','b2')
-sgtitle('Porównanie metod estymacji dla ró¿nych warunków pocz¹tkowych ro')
+%sgtitle('Porównanie metod estymacji dla ró¿nych warunków pocz¹tkowych ro')
 % Zad 1.1.6
 figure
 plot(P_trace)
@@ -195,7 +195,7 @@ end
 % Wyœwietlenie wyników:
 figure
 subplot(3,1,1)
-sgtitle('Zad 1.1.7 - porównanie wyników')
+%sgtitle('Zad 1.1.7 - porównanie wyników')
 plot(ym_biezace)
 hold on
 plot(yo)

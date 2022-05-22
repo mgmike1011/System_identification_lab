@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.4"
+    ComputedModelVersion    "1.5"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -43,7 +43,7 @@ Model {
       $ObjectID		      3
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [100.0, 76.0, 800.0, 669.0]
+      Location		      [100.0, 76.0, 800.0, 668.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		4
@@ -67,9 +67,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[941.0, 626.0]
+	Extents			[941.0, 625.0]
 	ZoomFactor		[1.0]
-	Offset			[-8.9999999999999769, -5.4500092506408535]
+	Offset			[183.325, -8.0]
       }
     }
   }
@@ -79,9 +79,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "agnpi"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu May 19 10:03:21 2022"
-  RTWModifiedTimeStamp	  574855386
-  ModelVersionFormat	  "1.%<AutoIncrement:4>"
+  LastModifiedDate	  "Mon May 23 01:26:14 2022"
+  RTWModifiedTimeStamp	  575165986
+  ModelVersionFormat	  "1.%<AutoIncrement:5>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -1098,7 +1098,7 @@ Model {
   }
   System {
     Name		    "ARMAX_ZADANIE_1_2"
-    Location		    [100, 76, 900, 745]
+    Location		    [100, 76, 900, 744]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -1112,7 +1112,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "82"
+    SIDHighWatermark	    "83"
     Block {
       BlockType		      Clock
       Name		      "Clock"

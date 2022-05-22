@@ -10,7 +10,7 @@ c1o = 0.99; % wymuszenie zaklocenia kolorowego w rownaniu regresji
 fu = 0.025; % czestotliwosc sygnalu prostokatnego 
 
 global PIV_1 phatIV_1 % P - macierz kowariancyjna, p - estymata wektora
-roIV = 100; % wartosc do inicjalizowania macierzy kowariancyjnej P^IVch - mnoznik
+roIV = 10; % wartosc do inicjalizowania macierzy kowariancyjnej P^IVch - mnoznik
 d = 3; % liczba estymowanych parametrow (a1o, b2o, a2o)
 PIV_1 = roIV * eye(d); % warunek poczatkowy P^IV(0) z wyboru arbitralnego ro*I
 phatIV_1 = [0; 0; 0]; % estymata wektora parametrow: a1 a2 b2 - warunek poczatkowy

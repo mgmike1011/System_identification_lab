@@ -15,7 +15,7 @@ y = Wej(7);
 fi = [-y_1; -y_2; u_2];
 
 % Zmienne instrumentalne z
-z = [-x_1; -x_2; u_1];
+z = [-x_1; -x_2; u_2];
 
 % Macierz kowariancyjna
 PIV_1 = PIV_1-((PIV_1*z*fi'*PIV_1)/(1+fi'*PIV_1*z));
