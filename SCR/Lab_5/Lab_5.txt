@@ -16,7 +16,7 @@ cat /var/log/kern.log | grep 'usb' | tail -n 3
 4.
 ####################################
 #!/bin/bash
-wynik=$(ifconfig | grep 'bytes' | grep 'RX' | sort -n +5 | tail -n 1 | tr -s ' >
+wynik=$(ifconfig | grep 'bytes' | grep 'RX' | sort -n +5 | tail -n 1 | tr -s ' ' | cut -d ' ' -f6)
 echo "Pobrane dane: $wynik"
 
 wynik2=$(ifconfig | grep 'ether' | tr -s ' ' | cut -d ' ' -f3)
@@ -29,4 +29,8 @@ for file in *.sh
 do
         md5sum $file >> raport.txt
 done
+####################################
+6.
+####################################
+
 ####################################
