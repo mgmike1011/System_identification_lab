@@ -45,7 +45,7 @@ done
 for file in $*
 do
 data=$(date '+%Y-%m-%d')
-nazwa="$file:$data.txt"
+nazwa="${file}_${data}.txt"
         if [ -e ~/backup ]
         then
                 if [ -e ~/backup/$nazwa ]
@@ -63,9 +63,9 @@ done
 
 8.
 ###############################################
+#!/bin/bash
 while [ ! -e $1 ]
 do
-
 sleep 5
 done
 
@@ -73,7 +73,7 @@ cat $1
 ###############################################
 
 9.
-###############################################                                  
+###############################################      
 #!/bin/bash
 wynik=$(($1+$2))
 echo $wynik
