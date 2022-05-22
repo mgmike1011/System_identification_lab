@@ -1,0 +1,36 @@
+1.
+####################################
+#!/bin/bash
+find $1 -type f -mtime -7 -name "*.sh" -exec chmod +x {} \; -print
+####################################
+2.
+####################################
+#!/bin/bash
+cat ~/.bashrc | grep 'color' | wc -l
+####################################
+3.
+####################################
+#!/bin/bash
+cat /var/log/kern.log | grep 'usb' | tail -n 3
+####################################
+4.
+####################################
+#!/bin/bash
+wynik=$(ifconfig | grep 'bytes' | grep 'RX' | sort -n +5 | tail -n 1 | tr -s ' ' | cut -d ' ' -f6)
+echo "Pobrane dane: $wynik"
+
+wynik2=$(ifconfig | grep 'ether' | tr -s ' ' | cut -d ' ' -f3)
+echo "Adresy MAC: $wynik2"
+####################################
+5.
+####################################
+#!/bin/bash
+for file in *.sh
+do
+        md5sum $file >> raport.txt
+done
+####################################
+6.
+####################################
+
+####################################

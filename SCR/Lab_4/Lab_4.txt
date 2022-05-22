@@ -1,0 +1,80 @@
+1. IMIE=AGA -> echo $IMIE -> export IMIE
+2. env
+3. PS1=AGA
+Z instrukcji:
+nano skrypt_1.sh -> chmod +x skrypt_1.sh -> ./skrypt_1.sh abc xyz 12345
+4.                                  
+###############################################
+#!/bin/bash
+
+for  file in *
+do
+        if  [ -f $file ]
+        then
+                echo "Plik: $file"
+        else
+                echo "Folder: $file"
+        fi 
+done
+###############################################
+5. 
+###############################################
+#!/bin/bash
+
+for file in $*
+do
+        echo "$file"
+        sort $file
+done
+###############################################
+Dla pizd: ./zad5.sh zad4.sh skrypt_1.sh 
+
+6.
+###################################################                           
+#!/bin/bash
+file=$1
+shift 
+for katalog in $*
+do
+        cp $file $katalog
+done
+################################################
+7.
+###############################################
+#!/bin/bash
+for file in $*
+do
+data=$(date '+%Y-%m-%d')
+nazwa="${file}_${data}.txt"
+        if [ -e ~/backup ]
+        then
+                if [ -e ~/backup/$nazwa ]
+                then
+                        echo "Plik istnieje"
+                else
+                        cp $file ~/backup/$nazwa
+                fi
+        else
+                mkdir ~/backup
+                cp $file ~/backup/$nazwa
+        fi
+done
+###############################################
+
+8.
+###############################################
+#!/bin/bash
+while [ ! -e $1 ]
+do
+sleep 5
+done
+
+cat $1
+###############################################
+
+9.
+###############################################      
+#!/bin/bash
+wynik=$(($1+$2))
+echo $wynik
+###############################################

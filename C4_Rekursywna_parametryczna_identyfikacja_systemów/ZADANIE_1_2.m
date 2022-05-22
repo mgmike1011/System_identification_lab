@@ -1,3 +1,4 @@
+clear all;
 %% Czesc 1. do odpalenia simulinka
 global Tp Tend Td
 Tp = 0.1; %okres probkowania
