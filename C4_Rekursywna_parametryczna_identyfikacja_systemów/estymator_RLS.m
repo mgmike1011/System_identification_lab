@@ -14,7 +14,7 @@ ym_RLS_1 = Wej_RLS(8); % odpowiedz modelu symulowanego z poprzedniej próbki dla 
 
 % Regresor
 fi = [-y_1; -y_2; u_2];
-
+epsilon = y-(fi'*phatRLS);
 % Macierz kowariancyjna - w zaleznosc id metody
 if metoda == 1 % WSPÓ£CZYNNIK ZAPOMINANIA
     P_RLS = (1/lambda)*(P_RLS-((P_RLS*fi*fi'*P_RLS)/(lambda+fi'*P_RLS*fi)));
@@ -33,7 +33,7 @@ trace_P_RLS = [trace_P_RLS trace(P_RLS)];
 
 % Wektorowe wzmocnienie i biezaca wartosc bledu predykcji
 k = P_RLS*fi;
-epsilon = y-(fi'*phatRLS);
+
 
 % Poprawka
 poprawka = k*epsilon; 

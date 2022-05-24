@@ -32,5 +32,69 @@ done
 ####################################
 6.
 ####################################
-
+#!/bin/bash
+for file in *.sh
+do
+        suma=$(md5sum $file)
+        nazwa=$(echo $suma | tr -s ' ' | cut -d ' ' -f2)
+        suma_kontrolna=$(echo $suma | tr -s ' ' | cut -d ' ' -f1)
+        cat raport.txt | while read line
+        do
+                nazwa_plik=$(echo $line | tr -s ' ' | cut -d ' ' -f2)
+                suma_kontrolna_plik=$(echo $line | tr -s ' ' | cut -d ' ' -f1)
+                if [ $nazwa = $nazwa_plik ]
+                then
+                        if [ $suma_kontrolna = $suma_kontrolna_plik ] 
+                        then
+                                echo "$nazwa_plik Zgodny"
+                        else
+                                echo "$nazwa_plik Zmodyfikowany"
+                        fi
+                fi
+        done
+done
+####################################
+7.
+####################################
+cat plantets.txt | tail -n 8 | tr -s ' ' | sort -n +3 | tail -n 3 | cut -d ' ' -f1 | sort
+####################################
+8.
+####################################
+cat trees.txt | tail -n 10 | grep 'chronione' | grep 'brzoza' | sort -n -t ',' +1 -r | head -n 2 | cut -d ',' -f3 > output.txt
+####################################
+9.
+####################################
+#!/bin/bash
+for file in $*
+do
+        nazwa=$file
+        cat $file | while read line
+        do
+                echo "$nazwa: $line"
+        done
+done
+####################################
+10.
+####################################
+#!/bin/bash
+wynik=0
+for file in $*
+do
+        wynik_=$(cat $file | wc -c )
+        let wynik=$wynik+$wynik_
+done
+echo $wynik
+####################################
+11.
+####################################
+#!/bin/bash
+mkdir ~/pictures_backup
+for file in *.jpg
+do
+        cp $file ~/pictures_backup/
+done
+for file in ~/pictures_backup/*.jpg
+do
+        chmod a=r $file
+done
 ####################################

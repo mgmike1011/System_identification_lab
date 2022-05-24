@@ -1,3 +1,4 @@
+clear all;
 %% Czesc 1. do odpalenia simulinka
 global Tp Tend Td
 Tend = 1500; % horyzont czasowy symulacji
@@ -30,9 +31,9 @@ T = 101; % okres resetowania
 global trace_P_RLS % Slad macierzy
 trace_P_RLS = trace(P_RLS); % Slad macierzy warunek poczatkowy
 
-epsilon_max = 4;
+epsilon_max = 0;
 global P_min
-P_min = 0.05; % min œlad macierzy P
+P_min = 0; % min œlad macierzy P
 %% Po symulacji w simulinku
 % 2_1 3 kropka - wyswietlenie sladu macierzy P metoda RLS Lambda
 % wspolczynnik zapominania
