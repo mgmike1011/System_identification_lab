@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.29"
+    ComputedModelVersion    "1.31"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -83,9 +83,9 @@ Model {
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
 	  Extents		  [1875.0, 745.0]
-	  ZoomFactor		  [0.6]
-	  Offset		  [-624.70732141909775, -103.29787593234437]
-	  SceneRectInView	  [-624.70732141909775, -103.29787593234437, 2500.0, 993.33333333333337]
+	  ZoomFactor		  [0.8]
+	  Offset		  [-247.84783176237761, -12.263398598676758]
+	  SceneRectInView	  [-247.84783176237761, -12.263398598676758, 1875.0, 745.0]
 	}
 	Object {
 	  $ObjectID		  6
@@ -95,8 +95,8 @@ Model {
 	  LoadSaveID		  "27"
 	  Extents		  [1875.0, 745.0]
 	  ZoomFactor		  [1.0]
-	  Offset		  [-542.63671875, -145.10000000000002]
-	  SceneRectInView	  [-542.63671875, -145.10000000000002, 1500.0, 596.0]
+	  Offset		  [-257.89599133861134, -144.58642419620375]
+	  SceneRectInView	  [-257.89599133861134, -144.58642419620375, 1500.0, 596.0]
 	}
 	Object {
 	  $ObjectID		  7
@@ -147,9 +147,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "mgmil"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun May 22 16:57:24 2022"
-  RTWModifiedTimeStamp	  575139442
-  ModelVersionFormat	  "1.%<AutoIncrement:29>"
+  LastModifiedDate	  "Mon May 23 09:27:33 2022"
+  RTWModifiedTimeStamp	  575198180
+  ModelVersionFormat	  "1.%<AutoIncrement:31>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -1239,6 +1239,10 @@ Model {
       ContinuousStateAttributes	"''"
       Realization	      "auto"
     }
+    Block {
+      BlockType		      ZeroOrderHold
+      SampleTime	      "1"
+    }
   }
   System {
     Name		    "SystemSISOC"
@@ -1257,16 +1261,16 @@ Model {
     TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "60"
+    ZoomFactor		    "80"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "51"
+    SIDHighWatermark	    "57"
     SimulinkSubDomain	    "Simulink"
     Block {
       BlockType		      Display
       Name		      "Display"
       SID		      "50"
       Ports		      [1]
-      Position		      [1235, 590, 1315, 650]
+      Position		      [1370, 590, 1450, 650]
       ZOrder		      32
       Decimation	      "1"
     }
@@ -1338,7 +1342,7 @@ Model {
       Name		      "Identyfikacja parametrów"
       SID		      "30"
       Ports		      [1, 1]
-      Position		      [1025, 530, 1185, 600]
+      Position		      [1160, 530, 1320, 600]
       ZOrder		      17
       MATLABFcn		      "Blok_identyfikacji_zad_3"
     }
@@ -1351,6 +1355,17 @@ Model {
       ZOrder		      27
       ShowName		      off
       Inputs		      "8"
+      DisplayOption	      "bar"
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux1"
+      SID		      "53"
+      Ports		      [2, 1]
+      Position		      [665, 11, 670, 49]
+      ZOrder		      34
+      ShowName		      off
+      Inputs		      "2"
       DisplayOption	      "bar"
     }
     Block {
@@ -1370,7 +1385,7 @@ Model {
       "6666666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.83137"
       "2549019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 "
       "0.650980392156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines'"
-      ",3,'LineNames',{{'ym','yo','y'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimRea"
+      ",3,'LineNames',{{'y','yo','ym'}},'ShowContent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimRea"
       "l','-2.69022','MaxYLimReal','2.62395','YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','2.69022','LegendVisib"
       "ility','On','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.68627450980392"
       "2 0.686274509803922 0.686274509803922],'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 "
@@ -1412,25 +1427,25 @@ Model {
       Name		      "Scope1"
       SID		      "44"
       Ports		      [1]
-      Position		      [1255, 549, 1285, 581]
+      Position		      [1390, 549, 1420, 581]
       ZOrder		      28
       ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extm"
       "gr.Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('S"
       "ources','WiredSimulink',true,'DataLoggingVariableName','ScopeData1'),extmgr.Configuration('Visuals','Time Domain"
-      "',true,'SerializedDisplays',{struct('MinYLimReal','-0.22885','MaxYLimReal','2.0589','YLabelReal','','MinYLimMag'"
-      ",'0.00000','MaxYLimMag','2.0589','LegendVisibility','On','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesCol"
-      "or',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.06666666"
-      "66666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.8313725"
-      "49019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0."
-      "650980392156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',3"
-      ",'LineNames',{{'Identyfikacja parametrów:1','Identyfikacja parametrów:2','Identyfikacja parametrów:3'}},'ShowCon"
-      "tent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-0.22885','MaxYLimReal','2.0589','YLa"
-      "belReal','','MinYLimMag','0.00000','MaxYLimMag','2.0589','LegendVisibility','On','XGrid',true,'YGrid',true,'Plot"
-      "MagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'Col"
-      "orOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667;0.7"
-      "17647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.0588235294117647 1 1"
-      ";1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Configura"
-      "tion('Tools','Measurements',true,'Version','2019b')),'Version','2019b','Position',[536.2 185.8 560 420])"
+      "',true,'SerializedDisplays',{struct('MinYLimReal','-0.84048','MaxYLimReal','2.63455','YLabelReal','','MinYLimMag"
+      "','0.00000','MaxYLimMag','2.63455','LegendVisibility','On','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesC"
+      "olor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.066666"
+      "6666666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.83137"
+      "2549019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 "
+      "0.650980392156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines'"
+      ",3,'LineNames',{{'Identyfikacja parametrów:1','Identyfikacja parametrów:2','Identyfikacja parametrów:3'}},'ShowC"
+      "ontent',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','-0.84048','MaxYLimReal','2.63455','"
+      "YLabelReal','','MinYLimMag','0.00000','MaxYLimMag','2.63455','LegendVisibility','On','XGrid',true,'YGrid',true,'"
+      "PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],"
+      "'ColorOrder',[0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549;1 1 0.0666666666666667"
+      ";0.717647058823529 0.274509803921569 1;0.392156862745098 0.831372549019608 0.0745098039215686;0.0588235294117647"
+      " 1 1;1 0.0745098039215686 0.650980392156863])),extmgr.Configuration('Tools','Plot Navigation',true),extmgr.Confi"
+      "guration('Tools','Measurements',true,'Version','2019b')),'Version','2019b','Position',[536.2 185.8 560 420])"
       NumInputPorts	      "1"
       Floating		      off
     }
@@ -1603,10 +1618,9 @@ Model {
 	Line {
 	  Name			  "z2'"
 	  ZOrder		  19
-	  Labels		  [2, 1]
+	  Labels		  [-1, 0]
 	  SrcBlock		  "Sum1"
 	  SrcPort		  1
-	  Points		  [0, 0]
 	  DstBlock		  "Integrator1"
 	  DstPort		  1
 	}
@@ -1659,6 +1673,7 @@ Model {
 	  InternalMargins	  [0, 0, 0, 0]
 	  HorizontalAlignment	  "left"
 	  VerticalAlignment	  "top"
+	  ZOrder		  -1
 	}
       }
     }
@@ -1667,12 +1682,32 @@ Model {
       Name		      "To Workspace"
       SID		      "49"
       Ports		      [1]
-      Position		      [1225, 510, 1315, 540]
+      Position		      [1360, 510, 1450, 540]
       ZOrder		      31
       VariableName	      "parametry"
       MaxDataPoints	      "inf"
       FixptAsFi		      on
       SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace1"
+      SID		      "52"
+      Ports		      [1]
+      Position		      [705, 15, 795, 45]
+      ZOrder		      33
+      VariableName	      "estymacja_LS"
+      MaxDataPoints	      "inf"
+      FixptAsFi		      on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      ZeroOrderHold
+      Name		      "Zero-Order\nHold"
+      SID		      "57"
+      Position		      [1055, 550, 1090, 580]
+      ZOrder		      38
+      SampleTime	      "Tp"
     }
     Block {
       BlockType		      SubSystem
@@ -1845,15 +1880,24 @@ Model {
 	ZOrder			105
 	Points			[56, 0]
 	Branch {
-	  ZOrder		  6
-	  DstBlock		  "identyfikowany\nsystem SISOC"
-	  DstPort		  1
+	  ZOrder		  170
+	  Points		  [0, -40]
+	  Branch {
+	    ZOrder		    5
+	    Labels		    [-1, 0]
+	    DstBlock		    "Scope"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    167
+	    Points		    [0, -40]
+	    DstBlock		    "Mux1"
+	    DstPort		    1
+	  }
 	}
 	Branch {
-	  ZOrder		  5
-	  Labels		  [-1, 0]
-	  Points		  [0, -40]
-	  DstBlock		  "Scope"
+	  ZOrder		  6
+	  DstBlock		  "identyfikowany\nsystem SISOC"
 	  DstPort		  1
 	}
       }
@@ -1912,6 +1956,12 @@ Model {
 	    }
 	  }
 	}
+      }
+      Branch {
+	ZOrder			169
+	Points			[0, -45]
+	DstBlock		"Mux1"
+	DstPort			2
       }
       Branch {
 	ZOrder			51
@@ -1985,13 +2035,6 @@ Model {
 	DstBlock		"Porównanie przebiegów sygna³ów"
 	DstPort			3
       }
-    }
-    Line {
-      ZOrder		      57
-      SrcBlock		      "Mux"
-      SrcPort		      1
-      DstBlock		      "Identyfikacja parametrów"
-      DstPort		      1
     }
     Line {
       ZOrder		      58
@@ -2072,6 +2115,27 @@ Model {
 	DstPort			1
       }
     }
+    Line {
+      ZOrder		      165
+      SrcBlock		      "Mux1"
+      SrcPort		      1
+      DstBlock		      "To Workspace1"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      178
+      SrcBlock		      "Zero-Order\nHold"
+      SrcPort		      1
+      DstBlock		      "Identyfikacja parametrów"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      177
+      SrcBlock		      "Mux"
+      SrcPort		      1
+      DstBlock		      "Zero-Order\nHold"
+      DstPort		      1
+    }
     Annotation {
       SID		      "51"
       Name		      "Symulator"
@@ -2085,7 +2149,7 @@ Model {
       BackgroundColor	      "[0.956863, 0.980392, 0.921569]"
       DropShadow	      on
       AnnotationType	      "area_annotation"
-      ZOrder		      254
+      ZOrder		      322
       FontSize		      12
     }
     Annotation {
@@ -2101,7 +2165,7 @@ Model {
       BackgroundColor	      "[0.992157, 0.937255, 0.913725]"
       DropShadow	      on
       AnnotationType	      "area_annotation"
-      ZOrder		      256
+      ZOrder		      324
       FontSize		      12
     }
     Annotation {
@@ -2117,7 +2181,7 @@ Model {
       BackgroundColor	      "[0.901961, 0.901961, 1.000000]"
       DropShadow	      on
       AnnotationType	      "area_annotation"
-      ZOrder		      255
+      ZOrder		      323
       FontSize		      12
     }
     Annotation {
@@ -2142,7 +2206,7 @@ Model {
       BackgroundColor	      "[0.992157, 0.937255, 0.913725]"
       DropShadow	      on
       AnnotationType	      "area_annotation"
-      ZOrder		      253
+      ZOrder		      321
       FontSize		      12
     }
   }

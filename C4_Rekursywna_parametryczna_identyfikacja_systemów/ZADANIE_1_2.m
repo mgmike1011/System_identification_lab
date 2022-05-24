@@ -6,7 +6,7 @@ Tend = 1000; % horyzont czasowy symulacji
 Td = 1500; % czas, po ktorym jest zmiana b2o
 
 global c1o
-c1o = 0.99; % wymuszenie zaklocenia kolorowego w rownaniu regresji
+c1o = 0.7; % wymuszenie zaklocenia kolorowego w rownaniu regresji
 
 fu = 0.025; % czestotliwosc sygnalu prostokatnego 
 
@@ -14,7 +14,7 @@ global PIV_1 phatIV_1 % P - macierz kowariancyjna, p - estymata wektora
 roIV = 10; % wartosc do inicjalizowania macierzy kowariancyjnej P^IVch - mnoznik
 d = 3; % liczba estymowanych parametrow (a1o, b2o, a2o)
 PIV_1 = roIV * eye(d); % warunek poczatkowy P^IV(0) z wyboru arbitralnego ro*I
-phatIV_1 = [0; 0; 0]; % estymata wektora parametrow: a1 a2 b2 - warunek poczatkowy
+phatIV_1 = [-0.719268137921564;-0.175104129351012;0.528296362093954]; % estymata wektora parametrow: a1 a2 b2 - warunek poczatkowy
 
 global trace_P_IV % Slad macierzy
 trace_P_IV = trace(PIV_1); % Slad macierzy warunek poczatkowy
