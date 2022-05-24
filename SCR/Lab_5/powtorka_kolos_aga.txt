@@ -1,0 +1,33 @@
+Zadania powtorkowe przed kolokwium
+
+1. skrypt - znalezienie w katalogu plikow .sh modyfikowane max 7 lat temu i prawo do wykonywania 
+
+#!/bin/bash
+find $1 -name "*.sh" -mtime -7  -exec chmod +x {}  \; -print
+
+2. Liczba linii zawierajaca "color" 
+
+#!/bin/bash
+grep -n 'color' ~/.bashrc | wc -l 
+
+
+3. 3 ostatnie zdarzenia dot. USB
+
+#!/bin/bash
+grep 'usb' /var/log/kern.log | tail -n 3 
+
+4. 
+4.1.
+Jesli jest error ifconfig not foud:
+	1) sprawdzam dystrybucje 
+	2) sudo apt install net-tools
+#!/bin/bash
+ifconfig |  grep 'RX' | grep 'bytes' | sort -n
+4.2.
+#!/bin/bash
+wypisanie=$(ifconfig | grep 'ether' | tr -s ' ') 
+echo  MAC: "$wypisanie"
+
+5. 
+
+
