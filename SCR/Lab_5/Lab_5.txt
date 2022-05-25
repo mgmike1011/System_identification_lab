@@ -98,3 +98,67 @@ do
         chmod a=r $file
 done
 ####################################
+12.
+####################################
+#!/bin/bash
+flaga=0
+for file in $*
+do
+        if [ $flaga = 0 ]
+        then
+                plik=$file
+                flaga=1
+        else
+                mod=$file
+                flaga=0
+                chmod $mod $plik
+        fi
+done
+####################################
+13.
+####################################
+#!/bin/bash
+tekst=$1
+rozsze=$2
+for file in *.$rozsze
+do
+        echo $tekst >> $file
+done
+####################################
+14.
+####################################
+#!/bin/bash
+for exten in $*
+do
+wynik=0
+        for file in *.$exten
+        do
+                let wynik=$wynik+1
+        done
+echo "$exten: $wynik"
+done
+####################################
+15.
+####################################
+#!/bin/bash
+iter=1
+for file in $*
+do
+        out=$(cat $file | tail -n $iter | head -n 1)
+        echo $out
+        let iter=$iter+1
+done
+####################################
+16.
+####################################
+ #TODO
+####################################
+17.
+####################################
+#!/bin/bash
+for file in ./katalog/*.txt
+do
+        wynik=$(cat $file | wc -w )
+        mv $file ./katalog/$wynik.txt
+done
+####################################
