@@ -151,7 +151,21 @@ done
 ####################################
 16.
 ####################################
- #TODO
+#!/bin/bash
+porownanie=$(diff $1 $2)
+if [ ! -z $porowanie ]
+then
+        echo "Pliki sa jednakowe"
+else
+        x1=$(cat $1 | wc -l)
+        x2=$(cat $2 | wc -l)
+        if [ $x1 -gt $x2 ]
+        then
+                echo "$1 ma wiecej linii niz $2"
+        else
+                echo "$2 ma wiecej linii niz $1"
+        fi
+fi
 ####################################
 17.
 ####################################
@@ -161,4 +175,53 @@ do
         wynik=$(cat $file | wc -w )
         mv $file ./katalog/$wynik.txt
 done
+####################################
+18.
+####################################
+#!/bin/bash
+warunek=S
+while [ $warunek != EXIT ]
+do
+        read X
+        if [ $X = EXIT ]
+        then
+                warunek=$X
+                break
+        fi
+        read Y
+        kill $Y $X
+done
+####################################
+19.
+####################################
+TODO
+####################################
+20.
+####################################
+#!/bin/bash
+for i in {1..10}
+do
+        uuid >> id.txt
+done
+plik=$(cat id.txt | sort -o id.txt)
+####################################
+21.
+####################################
+#!/bin/bash
+function fib {
+        if [ $1 -le 0 ]
+        then
+                echo 0
+        fi
+        if [ $1 -le 2 ]
+        then
+                echo 1
+        else
+                a=$(fib $[$1-1])
+                b=$(fib $[$1-2])
+                echo $(($a+$b))
+        fi
+}
+
+fib $1
 ####################################
