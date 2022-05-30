@@ -21,3 +21,6 @@ title('Sygna³ wyjœciowy z obiektu')
 Tp = 0.01; % [s] Okres próbkowania
 N = length(u); % Iloœæ próbek w eksperymencie
 n_y = y(150:end); % Próbki y bez odjêtej sk³adowej sta³ej
+u_wyciete = u(1001:end);
+y_wyciete = y(1001:end);
+t_wyciete = t(1:(end-1000));
