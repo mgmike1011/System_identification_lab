@@ -1,0 +1,234 @@
+Zadania powtorkowe przed kolokwium
+nano nazwa.sh
+na poczatku #!/bin/bash
+nie zapomnij o chmod +x ./nazwa.sh
+
+1. skrypt - znalezienie w katalogu plikow .sh modyfikowane max 7 lat temu i prawo do wykonywania 
+
+#!/bin/bash
+find $1 -name "*.sh" -mtime -7  -exec chmod +x {}  \; -print
+
+2. Liczba linii zawierajaca "color" 
+
+#!/bin/bash
+grep -n 'color' ~/.bashrc | wc -l 
+
+
+3. 3 ostatnie zdarzenia dot. USB
+
+#!/bin/bash
+grep 'usb' /var/log/kern.log | tail -n 3 
+
+4. 
+4.1.
+Jesli jest error ifconfig not foud:
+	1) sprawdzam dystrybucje 
+	2) sudo apt install net-tools
+#!/bin/bash
+ifconfig |  grep 'RX' | grep 'bytes' | sort -n
+4.2.
+#!/bin/bash
+wypisanie=$(ifconfig | grep 'ether' | tr -s ' ') 
+echo  MAC: "$wypisanie"
+
+5. Tworzenie pliku z zawartoscia -> nazwa dokumentu .txt i suma kontrolna
+
+#!/bin/bash
+touch  raport.txt
+for file in *.txt
+do
+        md5sum $file  >> raport.txt
+done
+
+6. Weryfikacja integralnosci pliku w katalogu. 
+#!/bin/bash
+for file in *.txt
+do
+suma=$(echo md5sum $file | tr -s ' ' | cut -d ' ' -f1)
+        plik_nazwa=$(echo md5sum $file |tr -s ' ' | cut -d ' ' -f2)
+        cat raport.txt | while read line
+        do
+                suma_raport=$(echo $line | cut -d ' ' -f1)
+                plik_raport=$(echo $line | cut -d ' ' -f2)
+
+                if [ $plik_nazwa=$plik_raport ]
+                then
+                        if [ $suma=$suma_raport ]
+                        then
+                                echo "$plik_raport zgodny"
+                        else
+                                echo "$plik_raport rozbiezne"
+                        fi
+                fi
+
+        done
+done
+
+7. Wyswietlenie 3 najwiekszych planet - sortowanie alfabetycznie
+
+#!/bin/bash
+for file in $1
+do
+cat $file | tail -n 8 | tr -s ' ' |  sort -n +3 -r | head -n 3 | cut -d ' ' -f1 | sort
+done
+
+8. Zapisanie do pliku output.txt 3 wysokosci najwyzszych chronionych brzoz
+
+#!/bin/bash
+cat ~/Desktop/trees.txt | tail | grep chronione | grep brzoza | sort -t ',' -n +2 -r | head -n 2 | cut -d ',' -f3 > output.txt
+
+9. Sklejanie i wyswietlanie zawartosci plikow podanych jako argumenty
+
+#!/bin/bash
+for file in $*
+do
+        cat $file
+        echo $file
+done
+
+10. Zliczanie sumy znakow plikow podanych jako argumenty
+
+#!/bin/bash
+znaki=0
+for file in $*
+do
+        znaki_plik=$(cat $file | tr -s ' ' | wc -c)
+        let znaki=$znaki+$znaki_plik
+done
+echo $znaki
+
+11. Kopiowanie jpg do nowego katalogu 
+
+#!/bin/bash
+mkdir ~/pictures_backup
+for file in *.jpg
+do
+        cp $file ~/pictures_backup/
+        chmod a=r $file
+done
+
+12. Przydzielanie plikom (argumentom) praw dostepu na podstawie podanej notacji - troche zmodyfikowane z tresci bo nie wiem jak taka sekwencje walnac
+
+#!/bin/bash
+while getopts f:n: flag; do
+        case $flag in 
+                f)
+                        filename=${OPTARG}
+                        ;;
+                n)
+                        number=${OPTARG}
+                        ;;
+        esac
+done
+chmod  $number $filename
+
+13. Dopisanie tekstu na koncu pliku z danym rozszerzeniem w biezacym katalogu
+
+#!/bin/bash
+tekst=$1
+rozszerzenie=$2
+
+for file in *.$rozszerzenie
+do
+        echo $tekst >> $file
+done
+
+14. zsumowanie wielkosci plikow dla kazdego rozszerzenia
+
+#!/bin/bash
+for rozszerzenie in $*
+do
+        wynik=0
+        for file in *.$rozszerzenie
+        do
+                filesize=$(stat -c%s $file)
+                let wynik=$wynik+filesize
+        done
+echo "$rozszerzenie : $wynik"
+done
+
+15. pierwsza linia od konca pierwszego argumentu, druga linia od konca drugiego argumentu, komunikat gdy plik za krotki
+
+#!/bin/bash
+i=1
+for file in $*
+do
+        liczba_linii=$(wc -l < $file)
+        if [ $liczba_linii > $i ]
+        then 
+                linia=$(cat $file | tail -n $i)
+                echo $linia
+                let i=$i+1
+        else
+                echo "blad"
+        fi
+done
+
+16. porownywanie zawartosci plikow
+
+#!/bin/bash
+plik1=$1
+plik2=$2
+
+if cmp --silent -- $plik1 $plik2 
+then
+        echo "takie same"
+else
+        linie_plik1=$(cat $plik1 | wc -l)
+        linie_plik2=$(cat $plik2 | wc -l)
+        if [ $linie_plik1 > $linie_plik2 ]
+        then
+                echo "$plik1 ma wiecej lub tyle samo linii od $plik2"
+        else
+                echo "$plik2 ma wiecej linii od $plik1"
+        fi
+fi
+
+
+17. zamienia nazwy plikow na liczbe znakow
+
+#!/bin/bash
+for file in *.txt
+do
+        liczba_znakow=$(cat $file | wc -c)
+        mv $file $liczba_znakow.txt
+done
+
+18. 
+warunek=S -> proces jest uspiony
+
+#!/bin/bash
+proces=S
+while [ $proces != EXIT ]
+do
+        read X
+        if [ $X = EXIT ]
+        then
+                proces=$X
+                break
+        fi
+        read Y
+        kill $Y $X
+done
+
+19. Zle - zmienia nazwy wszystkich katalogow w home bez podkatalogow 
+#!/bin/bash
+
+for directory in *
+do
+    if [ -d "$directory" ]
+    then
+      mv ${directory} ${directory^^} || echo "Could not rename $directory"
+    fi
+done
+
+20. uuid generowanie 10 identyfikatorow
+
+#!/bin/bash
+for i in {1..10}
+do
+        uuid >> id.txt
+done
+plik=$(cat id.txt | sort -o id.txt)
+
+21. 
