@@ -4,20 +4,37 @@ load('dane_.mat');
 % Podstawowe dane
 Tp = 0.01; % [s] Okres próbkowania
 N = length(u_); % Iloœæ próbek w eksperymencie
+t_odp_skok = t_(1:499);
+y_odp_skok = y_(499:997);
+u_odp_skok = u_(499:997);
+%% Sposób Andrzeja 
+M = 50;
+ryu = zeros(M, 1);
+for tau=0:M-1
+    ryu(tau + 1) = Covar([y_, u_], tau);
+end
+Ruu = zeros(M, M);
+for i=0:M-1
+    for j=0:M-1
+        Ruu(i+1, j+1) = Covar([u_, u_], j - i);
+    end
+end
+gM1 = 1/Tp*pinv(Ruu) * ryu;
+t = ((0:M-1) * Tp)';
+plot(t,gM1);
+
+%% Sposób Aga i Mi³osz
 % Autokorelacja w³asna i wzajemna
 ryu = zeros(1,N);
 ruu = zeros(1,N);
-for i=1:1:N
+for i=1:N
    ryu(i) = Covar([y_ u_], i-1); % korelacja wzajemna yu
    ruu(i) = Covar([u_ u_], i-1); % autokorelacja u
 end
-M = 100; % Horyzont oszacowania
-
+M = 50; % Horyzont oszacowania
 ryu=ryu(1:M); % zapisanie w postaci 1 wiersza o d³ugoœci M
-
 % ograniczenie liczby próbek autokorelacji do M
 ruu=ruu(1:M); % zapisanie w postaci 1 wiersza o d³ugoœci M
-
 ruuo=ruu(M:-1:1); % odwrócenie osi
 ruuo=ruuo(1:M-1); % zmniejszenie liczby próbek odwróconego
 ru=[ruuo  ruu]; % po³¹czenie sygna³u z jego odbiciem
@@ -28,7 +45,6 @@ for i=1:1:M
         Ruu(j,i)=ru(i-j+M); % Macierz Ruu
     end
 end
-
 pseudoodwrotna_Ruu = pinv(Ruu);
 odp_impuls= pseudoodwrotna_Ruu*ryu'/Tp;
 % Wyœwietlenie danych

@@ -23,6 +23,6 @@ else
 end
 
 % CYU = (1/N)*(Ud'*Yp);                   %uwaga: normalizacja wartoœci¹ 'N'
-CYU = (1/(N-abs(tau)))*(Ud'*Yp);        %uwaga: normalizacja wartoœci¹ 'N-|tau|'
+ CYU = (1/(N-abs(tau)))*(Ud'*Yp);        %uwaga: normalizacja wartoœci¹ 'N-|tau|'
 
 C = CYU;

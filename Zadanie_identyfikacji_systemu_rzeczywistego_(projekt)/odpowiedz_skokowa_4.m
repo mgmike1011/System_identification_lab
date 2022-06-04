@@ -5,9 +5,10 @@ y_odp_skok = y_(499:997);
 u_odp_skok = u_(499:997);
 % Wyúwietlenie odpowiedzi skokowej
 plot(t_odp_skok,y_odp_skok);
-title('Odpowiedü skokowa z pomiarÛw');
+title('Odpowiedü skokowa - na podstawie pomiarÛw');
 xlabel('Czas [s]')
 grid on
+
 % Obliczenie odpowiedzi impulsowej ze skokwej
 odp_impulsowe = zeros(1,length(t_odp_skok));
 for i=2:length(t_odp_skok)
@@ -18,5 +19,6 @@ figure
 plot(t_odp_skok,odp_impulsowe)
 title('Odpowiedü impulsowa - na podstawie pochodnej z odp. skokwej')
 xlabel('Czas [s]')
+grid on
 % Wzmocnienie statyczne
 K = y_odp_skok(end)/u_odp_skok(end);

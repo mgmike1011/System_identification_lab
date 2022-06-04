@@ -1,3 +1,4 @@
+sim('AKident')
 N = 1001;
 Tp = 1;
 sigma2v = 0.1;

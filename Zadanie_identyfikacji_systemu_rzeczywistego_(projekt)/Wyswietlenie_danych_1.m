@@ -6,17 +6,20 @@ plot(t,u);
 hold on
 plot(t,y);
 hold off
+grid on
 xlabel('t [s]')
 legend('u','y')
 title('Sygna³ steruj¹cy i wyœciowy')
 subplot(3,1,2)
 plot(t,u)
 xlabel('t [s]')
+grid on
 title('Sygna³ wejœciowy do obiektu')
 subplot(3,1,3)
 plot(t,y)
 xlabel('t [s]')
 title('Sygna³ wyjœciowy z obiektu')
+grid on
 % Dane wstêpne
 Tp = 0.01; % [s] Okres próbkowania
 N = length(u); % Iloœæ próbek w eksperymencie
