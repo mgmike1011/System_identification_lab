@@ -26,12 +26,12 @@ y_n_1 = [0;Z_est_y(1:end-1)];
 y_n_2 = [0;0;Z_est_y(1:end-2)];
 u_n_2 = [0;0;Z_est_u(1:end-2)];
 fi_C = [y_n_1,-y_n_2,u_n_2];
-% fi_C = zeros(N_est,3);
-% for i = 3:N_est
-%     fi_C(i, :) = [Z_est_y(i-1), -Z_est_y(i-2), Z_est_u(i-2)];
-% end
     % Estymator LS parametrow modelu
 p_N_LS = pinv(fi_C)*Z_est_y;
+% Obliczenie parametrów
+b1 = p_N_LS(3)/Tp^2;
+a1 = (-p_N_LS(1)+2)/Tp;
+a2 = (p_N_LS(2)+a1*Tp-1)/Tp^2;
 %% Tustin
 y_n_1 = [0;Z_est_y(1:end-1)];
 y_n_2 = [0;0;Z_est_y(1:end-2)];
@@ -42,3 +42,20 @@ u_n_cal = u_n_2+2.*u_n_1+u_n;
 fi_C = [y_n_1,-y_n_2,u_n_cal];
     % Estymator LS parametrow modelu
 p_N_LS = pinv(fi_C)*Z_est_y;
+% Obliczenie parametrów
+params=[2*p_N_LS(1)*Tp,(p_N_LS(1)*Tp^2+2*Tp^2),0 
+        (2*Tp*p_N_LS(2)+2*Tp) ,(Tp^2*p_N_LS(2)-Tp^2) ,0 
+        2*Tp*p_N_LS(3) ,Tp^2*p_N_LS(3) ,-Tp^2 ]\[(8-4*p_N_LS(1));(4-4*p_N_LS(2));-4*p_N_LS(3)];
+%% Delta -
+y_n_1 = [0;Z_est_y(1:end-1)];
+y_n_2 = [0;0;Z_est_y(1:end-2)];
+u_n_2 = [0;0;Z_est_u(1:end-2)];
+u_n_1 = [0;Z_est_u(1:end-1)];
+u_n = Z_est_u;
+fi_C = [-y_n_1,-y_n_2,u_n];
+    % Estymator LS parametrow modelu
+p_N_LS = pinv(fi_C)*Z_est_y;
+% Obliczenie parametrów
+params=[p_N_LS(1)*Tp,(p_N_LS(1)*Tp^2),0 
+        (Tp*p_N_LS(2)+Tp) ,(Tp^2*p_N_LS(2)) ,0 
+        Tp*p_N_LS(3) ,Tp^2*p_N_LS(3) ,-Tp^2 ]\[(1-p_N_LS(1));(-2*-p_N_LS(2));-1*p_N_LS(3)];
