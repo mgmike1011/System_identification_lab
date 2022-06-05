@@ -13,7 +13,7 @@ d = 4; % Liczba parametrow
 %% Detla +
 % Przygotowanie danych pocz¹tkowych
 P1=eye(4);
-p1=[0;0;0;0];
+p1=[2;7;2;7];
 % Przygotowanie danych 
 y1 = 0;
 y2 = 0;
@@ -32,6 +32,7 @@ for i = 1:N
     p(1,i) = p_(1);
     p(2,i) = p_(2);
     p(3,i) = p_(3);
+    p(4,i) = p_(4);
     % Aktualizacja danych
     p1 = p_;
     P1 = P;
@@ -119,7 +120,7 @@ params=[p_(1)*Tp,(p_(1)*Tp^2),0
         Tp*p_(3) ,Tp^2*p_(3) ,-Tp^2 ]\[(1-p_(1));(-2*-p_(2));-1*p_(3)];
 %% Test odpowiedzi skokowej
 subplot(3,2,1)
-sys=tf([params(3)],[1 params(1) params(2)]);
+sys=tf([params(3) params(4)],[1 params(1) params(2)]);
 step(sys)
 title('System z estymacji')
 grid on
@@ -142,5 +143,6 @@ grid on
 hold on
 plot(p(2,:))
 plot(p(3,:))
+plot(p(4,:))
 title('Przebieg estymat parametrów')
-legend('p1','p2','p3')
+legend('p1','p2','p3','p4')
