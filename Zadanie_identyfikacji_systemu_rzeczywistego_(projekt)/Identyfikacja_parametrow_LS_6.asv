@@ -36,9 +36,4 @@ p_N_LS = pinv(fi_C)*Z_est_y;
 y_n_1 = [0;Z_est_y(1:end-1)];
 y_n_2 = [0;0;Z_est_y(1:end-2)];
 u_n_2 = [0;0;Z_est_u(1:end-2)];
-u_n_1 = [0;Z_est_u(1:end-1)];
-u_n = Z_est_u;
-u_n_cal = u_n_2+2.*u_n_1+u_n;
-fi_C = [y_n_1,-y_n_2,u_n_cal];
-    % Estymator LS parametrow modelu
-p_N_LS = pinv(fi_C)*Z_est_y;
+fi_C = [y_n_1,-y_n_2,u_n_2];
