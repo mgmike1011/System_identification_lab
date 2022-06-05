@@ -7,24 +7,24 @@ load('dane_.mat')
 % Podstawowe dane
 Tp = 0.01; % [s] Okres próbkowania
 N = length(u_); % Iloœæ próbek w eksperymencie
-d = 3; % Liczba parametrow
+d = 4; % Liczba parametrow
 % t_, y_, u_ - czas, odpowiedz, pobudzenie z danych
 
 %% Detla +
 % Przygotowanie danych pocz¹tkowych
-P1=eye(3);
-p1=[0;0;0];
+P1=eye(4);
+p1=[0;0;0;0];
 % Przygotowanie danych 
 y1 = 0;
 y2 = 0;
 u1 = 0;
 u2 = 0;
 % Wektor estymat
-p = zeros(3,length(u_)); 
+p = zeros(4,length(u_)); 
 % Przebieg œladu macierzy P^(LS):
 P_trace = trace(P1);
 for i = 1:N
-    fi = [y1;-y2;u2];
+    fi = [-y1;-y2;-u1;u2];
     P = P1 - (((P1*fi)*fi'*P1)/(1+fi'*P1*fi)); % Macierz kowariancyjna
     k = P*fi; % Wzmocnienie
     E = y_(i)-fi'*p1; % B³¹d predykcji jednokrokowej
@@ -42,10 +42,11 @@ for i = 1:N
     P_trace = [P_trace; trace(P)];
 end
 % Obliczenie parametrów
-b1 = p_(3)/Tp^2;
-a1 = (-p_(1)+2)/Tp;
-a2 = (p_(2)+a1*Tp-1)/Tp^2;
-params=[a1;a2;b1];
+a1 = (p_(1)+2)/Tp;
+a2 = (p_(2)-1+a1*Tp)/Tp^2;
+b1 = p_(3);
+b2 = (p_(4)+b1)/Tp;
+params=[a1;a2;b1;b2];
 %% Tustin
 % Przygotowanie danych pocz¹tkowych
 P1=eye(3);

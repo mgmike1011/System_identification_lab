@@ -7,7 +7,7 @@ load('dane_.mat')
 % Podstawowe dane
 Tp = 0.01; % [s] Okres próbkowania
 N = length(u_); % Iloœæ próbek w eksperymencie
-d = 4; % Liczba parametrow
+d = 3; % Liczba parametrow
 % t_, y_, u_ - czas, odpowiedz, pobudzenie z danych
 
 % Podzia³ danych pomiarowych na 2 podzbiory
@@ -24,17 +24,13 @@ N_wer = length(Z_wer_u);
     % Regresor
 y_n_1 = [0;Z_est_y(1:end-1)];
 y_n_2 = [0;0;Z_est_y(1:end-2)];
-u_n_1 = [0;Z_est_u(1:end-1)];
 u_n_2 = [0;0;Z_est_u(1:end-2)];
-fi_C = [-y_n_1,-y_n_2,u_n_1,u_n_2];
+fi_C = [y_n_1,-y_n_2,u_n_2];
     % Estymator LS parametrow modelu
 p_N_LS = pinv(fi_C)*Z_est_y;
 % Obliczenie parametrów
-a1 = (p_N_LS(1)+2)/Tp;
-a2 = (p_N_LS(2)-1+a1*Tp)/Tp^2;
-b1 = p_N_LS(3);
-b2 = (p_N_LS(4)+b1)/Tp;
-params=[a1;a2;b1;b2];
+a1 = (p_N_LS(1)+2)
+params=[a1;a2;b1];
 %% Tustin
 y_n_1 = [0;Z_est_y(1:end-1)];
 y_n_2 = [0;0;Z_est_y(1:end-2)];
@@ -63,5 +59,5 @@ params=[p_N_LS(1)*Tp,(p_N_LS(1)*Tp^2),0
         (Tp*p_N_LS(2)+Tp) ,(Tp^2*p_N_LS(2)) ,0 
         Tp*p_N_LS(3) ,Tp^2*p_N_LS(3) ,-Tp^2 ]\[(1-p_N_LS(1));(-2*-p_N_LS(2));-1*p_N_LS(3)];
 %% Test odpowiedzi skokowej
-sys=tf([params(3) params(4)],[1 params(1) params(2)]);
+sys=tf([params(3)],[1 params(1) params(2)]);
 step(sys)
