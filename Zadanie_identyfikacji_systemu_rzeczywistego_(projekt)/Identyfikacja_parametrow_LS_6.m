@@ -32,6 +32,7 @@ p_N_LS = pinv(fi_C)*Z_est_y;
 b1 = p_N_LS(3)/Tp^2;
 a1 = (-p_N_LS(1)+2)/Tp;
 a2 = (p_N_LS(2)+a1*Tp-1)/Tp^2;
+params=[a1;a2;b1];
 %% Tustin
 y_n_1 = [0;Z_est_y(1:end-1)];
 y_n_2 = [0;0;Z_est_y(1:end-2)];
@@ -59,3 +60,6 @@ p_N_LS = pinv(fi_C)*Z_est_y;
 params=[p_N_LS(1)*Tp,(p_N_LS(1)*Tp^2),0 
         (Tp*p_N_LS(2)+Tp) ,(Tp^2*p_N_LS(2)) ,0 
         Tp*p_N_LS(3) ,Tp^2*p_N_LS(3) ,-Tp^2 ]\[(1-p_N_LS(1));(-2*-p_N_LS(2));-1*p_N_LS(3)];
+%% Test odpowiedzi skokowej
+sys=tf([params(3)],[1 params(1) params(2)]);
+step(sys)

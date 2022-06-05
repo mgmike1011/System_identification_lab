@@ -21,6 +21,8 @@ u1 = 0;
 u2 = 0;
 % Wektor estymat
 p = zeros(3,length(u_)); 
+% Przebieg œladu macierzy P^(LS):
+P_trace = trace(P1);
 for i = 1:N
     fi = [y1;-y2;u2];
     P = P1 - (((P1*fi)*fi'*P1)/(1+fi'*P1*fi)); % Macierz kowariancyjna
@@ -37,11 +39,13 @@ for i = 1:N
     y1 = y_(i);
     u2 = u1;
     u1 = u_(i);
+    P_trace = [P_trace; trace(P)];
 end
 % Obliczenie parametrów
 b1 = p_(3)/Tp^2;
 a1 = (-p_(1)+2)/Tp;
 a2 = (p_(2)+a1*Tp-1)/Tp^2;
+params=[a1;a2;b1];
 %% Tustin
 % Przygotowanie danych pocz¹tkowych
 P1=eye(3);
@@ -52,7 +56,9 @@ y2 = 0;
 u1 = 0;
 u2 = 0;
 % Wektor estymat
-p = zeros(3,length(u_)); 
+p = zeros(3,length(u_));
+% Przebieg œladu macierzy P^(LS):
+P_trace = trace(P1);
 for i = 1:N
     fi = [y1;-y2;(u2+2*u1+u_(i))];
     P = P1 - (((P1*fi)*fi'*P1)/(1+fi'*P1*fi)); % Macierz kowariancyjna
@@ -69,6 +75,7 @@ for i = 1:N
     y1 = y_(i);
     u2 = u1;
     u1 = u_(i);
+    P_trace = [P_trace; trace(P)];
 end
 % Obliczenie parametrów
 params=[2*p_(1)*Tp,(p_(1)*Tp^2+2*Tp^2),0 
@@ -85,6 +92,8 @@ u1 = 0;
 u2 = 0;
 % Wektor estymat
 p = zeros(3,length(u_)); 
+% Przebieg œladu macierzy P^(LS):
+P_trace = trace(P1);
 for i = 1:N
     fi = [-y1;-y2;u_(i)];
     P = P1 - (((P1*fi)*fi'*P1)/(1+fi'*P1*fi)); % Macierz kowariancyjna
@@ -101,8 +110,36 @@ for i = 1:N
     y1 = y_(i);
     u2 = u1;
     u1 = u_(i);
+    P_trace = [P_trace; trace(P)];
 end
 % Obliczenie parametrów
 params=[p_(1)*Tp,(p_(1)*Tp^2),0 
         (Tp*p_(2)+Tp) ,(Tp^2*p_(2)) ,0 
         Tp*p_(3) ,Tp^2*p_(3) ,-Tp^2 ]\[(1-p_(1));(-2*-p_(2));-1*p_(3)];
+%% Test odpowiedzi skokowej
+subplot(3,2,1)
+sys=tf([params(3)],[1 params(1) params(2)]);
+step(sys)
+title('System z estymacji')
+grid on
+subplot(3,2,2)
+t_odp_skok = t_(1:499);
+y_odp_skok = y_(499:997);
+u_odp_skok = u_(499:997);
+plot(t_odp_skok,y_odp_skok)
+hold on
+plot(t_odp_skok,u_odp_skok)
+title('System prawdziwy')
+grid on
+subplot(3,2,[3,4])
+plot(P_trace)
+grid on
+title('Œlad macierzy P')
+subplot(3,2,[5,6])
+plot(p(1,:))
+grid on
+hold on
+plot(p(2,:))
+plot(p(3,:))
+title('Przebieg estymat parametrów')
+legend('p1','p2','p3')
