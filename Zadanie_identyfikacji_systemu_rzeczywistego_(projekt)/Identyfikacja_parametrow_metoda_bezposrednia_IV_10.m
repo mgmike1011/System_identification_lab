@@ -60,3 +60,18 @@ for i = 2:length(Z_est_u)-1
 end
 yw = yppF(2:end);
 p_N_IV = ((z_W'*fi_W)^(-1))*z_W'*yw;
+% Weryfikacja wyników:
+sys = tf([p_N_IV(3) p_N_IV(4)],[1 p_N_IV(1) p_N_IV(2)]);
+sim('Centrum_doswiadczalne')
+plot(u_);
+hold on
+plot(y_);
+plot(Model_IV_bezposrednia(1:2000,2));
+grid on
+legend('u','y','y_{model}')
+% WskaŸnik dopasowania:
+y_wsk = y_(500:end);
+model_wsk = Model_IV_bezposrednia(500:2000,2);
+my = (sum(y_wsk)/length(y_wsk)).*ones(1,length(y_wsk));
+J_Fit = (1-norm(y_wsk-model_wsk)/norm(y_wsk-my))*100;
+J = sum((y_wsk-model_wsk).^2)/length(y_wsk);
