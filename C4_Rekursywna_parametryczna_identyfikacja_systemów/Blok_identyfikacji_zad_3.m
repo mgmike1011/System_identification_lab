@@ -12,7 +12,7 @@ z = [-x1;-x;u]; % zmienne instrumentalne
 % Obliczenia estymatora
 P = P1 - (P1*z*fi'*P1)/(1+fi'*P1*z); 
 k = P * z;
-E = y_z_obiektu - fi'*p1;
+E = u_in(4) - fi'*p1;
 p = p1 + k*E;
 p1 = p;
 P1 = P;
