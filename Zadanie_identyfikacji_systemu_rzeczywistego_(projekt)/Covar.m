@@ -22,7 +22,7 @@ else
     Yp((1-tau):N) = Yd(1:(N+tau));  
 end
 
-% CYU = (1/N)*(Ud'*Yp);                   %uwaga: normalizacja wartoœci¹ 'N'
- CYU = (1/(N-abs(tau)))*(Ud'*Yp);        %uwaga: normalizacja wartoœci¹ 'N-|tau|'
+ CYU = (1/N)*(Ud'*Yp);                   %uwaga: normalizacja wartoœci¹ 'N'
+% CYU = (1/(N-abs(tau)))*(Ud'*Yp);        %uwaga: normalizacja wartoœci¹ 'N-|tau|'
 
 C = CYU;

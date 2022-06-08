@@ -8,7 +8,8 @@ Tp = 0.01; % [s] Okres próbkowania
 t_analiza_widmowa = t_;
 y_analiza_widmowa = y_;
 u_analiza_widmowa = u_;
-N = length(u_); % Iloœæ próbek w eksperymencie
+
+N = length(u_analiza_widmowa); % Iloœæ próbek w eksperymencie
 Mw = 300; % Mw < N/5
 i = -Mw:Mw;
 
@@ -26,10 +27,10 @@ okno_hanninga = 0.5*(cos(i*pi/Mw)+1);
 % Estymaty gestosci widmowych mocy
 Phi_uu = zeros(1,N);
 Phi_yu = zeros(1,N);
-for k = 0:N-1;
+for k = 0:length(-Mw:1:Mw);
   exp_razy_okno = exp(-1i*2*pi*i*k/N) .* okno_hanninga;
-  Phi_uu(k+1) = Tp * sum(okno_hanninga .* ru .* exp(-1j .* i .* (2*pi/N) * k)); 
-  Phi_yu(k+1) = Tp * sum(okno_hanninga .* ryu .* exp(-1j .* i .* (2*pi/N) * k)); 
+  Phi_uu(k+1) = sum(okno_hanninga .* ru .* exp(-1j .* i .* (2*pi*k/N) )); 
+  Phi_yu(k+1) = sum(okno_hanninga .* ryu .* exp(-1j .* i .* (2*pi*k/N) )); 
   
 end
 
