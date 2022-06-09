@@ -19,7 +19,7 @@ Z_wer_y = y_((1+(length(u_)/2)):end); % Dane weryfikuj¹ce y
 
 N_est = length(Z_est_u);
 N_wer = length(Z_wer_u);
-%% Delta +
+%% Delta + 
 % Identyfikacja parametrów metod¹ LS:
     % Regresor
 y_n_1 = [0;Z_est_y(1:end-1)];
@@ -35,7 +35,7 @@ a2 = (p_N_LS(2)-1+a1*Tp)/Tp^2;
 b1 = p_N_LS(3);
 b2 = (p_N_LS(4)+b1)/Tp;
 params=[a1;a2;b1;b2];
-%% Tustin
+%% Tustin - z³a struktura
 y_n_1 = [0;Z_est_y(1:end-1)];
 y_n_2 = [0;0;Z_est_y(1:end-2)];
 u_n_2 = [0;0;Z_est_u(1:end-2)];

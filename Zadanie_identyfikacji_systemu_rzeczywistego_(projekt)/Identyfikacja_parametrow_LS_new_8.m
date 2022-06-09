@@ -19,3 +19,12 @@ Z_wer_y = y_((1+(length(u_)/2)):end); % Dane weryfikuj¹ce y
 
 N_est = length(Z_est_u);
 N_wer = length(Z_wer_u);
+% Tustin
+y_n_1 = [0;Z_est_y(1:end-1)];
+y_n_2 = [0;0;Z_est_y(1:end-2)];
+u_n_2 = [0;0;Z_est_u(1:end-2)];
+u_n_1 = [0;Z_est_u(1:end-1)];
+u_n = Z_est_u;
+fi = [-y_n_2,-y_n_1,u_n_2,u_n_1,u_n];
+p_N_LS = pinv(fi)*Z_est_y;
+
